@@ -15,7 +15,8 @@ config.font_size = 16
 
 config.audible_bell = "Disabled"
 config.colors = { visual_bell = "#202020" }
-config.pane_focus_follows_mouse = true
+config.exit_behavior = "Hold"
+config.hide_tab_bar_if_only_one_tab = false
 config.prefer_to_spawn_tabs = true
 config.scrollback_lines = 5000
 config.switch_to_last_active_tab_when_closing_tab = true
@@ -30,8 +31,6 @@ config.window_background_opacity = 1
 config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "RESIZE"
 config.window_padding = { left = 10, right = 10, top = 10, bottom = 10 }
-config.hide_tab_bar_if_only_one_tab = false
-config.exit_behavior = "Hold"
 
 --SSH domains
 local ssh_domains = {}
