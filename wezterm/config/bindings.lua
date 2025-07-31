@@ -1,9 +1,11 @@
 local wezterm = require "wezterm"
 local workspaceSwitcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
 local act = wezterm.action
-local keys = {}
+local mod = {}
 
-keys.keys = {
+mod.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
+
+mod.keys = {
     { mods = "LEADER",       key = "Enter",      action = act.ActivateCopyMode },
     { mods = "LEADER",       key = "'",          action = act.SplitVertical { domain = "CurrentPaneDomain" } },
     { mods = "LEADER",       key = "-",          action = act.SplitVertical { domain = "CurrentPaneDomain" } },
@@ -24,9 +26,9 @@ keys.keys = {
     { mods = "LEADER",       key = "n",          action = act.ActivateTabRelative(1) },
     { mods = "LEADER",       key = "p",          action = act.ActivateTabRelative(-1) },
     { mods = "LEADER",       key = "t",          action = act.PromptInputLine { description = wezterm.format { { Attribute = { Intensity = "Bold" } }, { Foreground = { AnsiColor = "Fuchsia" } }, { Text = "Enter name for new tab" } }, action = wezterm.action_callback(function(window, pane, line) if line then window:active_tab():set_title(line) end end) } },
-    -- { mods = "LEADER", key = "s",          action = act.ShowLauncherArgs { flags = "WORKSPACES", title = "Workspace Selection" } }, -- Use smart_workspace_switcher instead
     { mods = "LEADER",       key = "w",          action = act.PromptInputLine { description = wezterm.format { { Attribute = { Intensity = "Bold" } }, { Foreground = { AnsiColor = "Fuchsia" } }, { Text = "Enter name for new workspace" } }, action = wezterm.action_callback(function(window, pane, line) if line then window:perform_action(act.SwitchToWorkspace { name = line }, pane) end end) } },
     { mods = "LEADER|SHIFT", key = "$",          action = act.PromptInputLine { description = wezterm.format { { Attribute = { Intensity = "Bold" } }, { Foreground = { AnsiColor = "Fuchsia" } }, { Text = "Enter new name for workspace" } }, action = wezterm.action_callback(function(window, pane, line) if line then wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line) end end) } },
+    -- { mods = "LEADER", key = "s",          action = act.ShowLauncherArgs { flags = "WORKSPACES", title = "Workspace Selection" } }, -- Use smart_workspace_switcher instead
     { mods = "LEADER",       key = "s",          action = workspaceSwitcher.switch_workspace() },
     { mods = "LEADER",       key = "o",          action = act.PromptInputLine { description = wezterm.format { { Attribute = { Intensity = "Bold" } }, { Foreground = { AnsiColor = "Fuchsia" } }, { Text = "Enter a domain name to open" } }, action = wezterm.action_callback(function(window, pane, line) if line then window:mux_window():spawn_tab { domain = { DomainName = line } } end end) } },
     { mods = "LEADER",       key = "d",          action = act.DetachDomain "CurrentPaneDomain" },
@@ -40,11 +42,11 @@ keys.keys = {
 }
 
 for i = 1, 9 do
-    table.insert(keys.keys, { mods = "LEADER",   key = tostring(i), action = act.ActivateTab(i - 1) })
-    table.insert(keys.keys, { mods = "CTRL|CMD", key = tostring(i), action = act.MoveTab(i - 1) })
+    table.insert(mod.keys, { mods = "LEADER",   key = tostring(i), action = act.ActivateTab(i - 1) })
+    table.insert(mod.keys, { mods = "CTRL|CMD", key = tostring(i), action = act.MoveTab(i - 1) })
 end
 
-keys.key_tables = {
+mod.key_tables = {
     resize_pane = {
         { key = "LeftArrow",  action = act.AdjustPaneSize { "Left", 5 } },
         { key = "RightArrow", action = act.AdjustPaneSize { "Right", 5 } },
@@ -54,4 +56,4 @@ keys.key_tables = {
     },
 }
 
-return keys
+return mod

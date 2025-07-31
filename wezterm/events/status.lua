@@ -1,25 +1,42 @@
-local wezterm   = require "wezterm"
-local nerdfonts = wezterm.nerdfonts
-package.path    = wezterm.home_dir .. "/.config/wezterm/?.lua;" .. package.path
-local functions = require "functions"
-local status    = {}
+local wezterm                 = require "wezterm"
+local nerdfonts               = wezterm.nerdfonts
+local appearance              = require "config.appearance"
+local functions               = require "utils.functions"
+local mod                     = {}
 
-function status.update_status(config, window, pane)
-    local colors = wezterm.color.get_builtin_schemes()[config.color_scheme]
+local GLYPH_SEMI_CIRCLE_LEFT  = nerdfonts.ple_left_half_circle_thick --[[ '' ]]
+local GLYPH_SEMI_CIRCLE_RIGHT = nerdfonts.ple_right_half_circle_thick --[[ '' ]]
+local GLYPH_TERMINAL          = nerdfonts.fa_terminal
+local GLYPH_FOLDER            = nerdfonts.fa_folder
+local GLYPH_USER              = nerdfonts.fa_user
+local GLYPH_SERVER            = nerdfonts.fa_server
+local GLYPH_CALENDAR          = nerdfonts.fa_calendar_o
+local GLYPH_ZOOM_IN           = nerdfonts.cod_zoom_in
+local GLYPH_COPY              = nerdfonts.md_content_copy
+local GLYPH_DOCKER            = nerdfonts.linux_docker
+local GLYPH_KUBERNETES        = nerdfonts.md_kuberntes
+local GLYPH_REMOTE_DESKTOP    = nerdfonts.md_remote_desktop
+local GLYPH_VIM               = nerdfonts.dev_vim
+local GLYPH_MONITOR           = nerdfonts.md_monitor_eye
+local GLYPH_WATCH             = nerdfonts.md_eye_outline
+
+function mod.update_status(window, pane)
+    local colors = wezterm.color.get_builtin_schemes()[appearance.color_scheme]
     -- Workspace name
     local active_key_table = window:active_key_table()
-    local stat = window:active_workspace()
+    local stat = string.format("%-8s", window:active_workspace())
     local workspace_color = colors.ansi[3]
     local time = wezterm.strftime("%m-%d %H:%M")
 
     if active_key_table then
-        stat = active_key_table
+        stat = string.format("%-8s", active_key_table)
         workspace_color = colors.ansi[4]
     elseif window:leader_is_active() then
-        stat = "leader"
+        stat = string.format("%-8s", "leader")
         workspace_color = colors.ansi[2]
     end
 
+    local username = os.getenv("USER") or os.getenv("LOGNAME") or os.getenv("USERNAME")
     local cwd_uri = pane:get_current_working_dir()
     local cwd = ""
     local hostname = ""
@@ -35,16 +52,13 @@ function status.update_status(config, window, pane)
         { Text = " " },
         { Background = { Color = colors.background } },
         { Foreground = { Color = workspace_color } },
-        { Text = nerdfonts.ple_left_half_circle_thick },
+        { Text = GLYPH_SEMI_CIRCLE_LEFT },
         { Background = { Color = workspace_color } },
         { Foreground = { Color = colors.ansi[1] } },
-        { Text = nerdfonts.cod_terminal_tmux .. " " },
+        { Text = GLYPH_TERMINAL .. " " },
         { Background = { Color = colors.ansi[1] } },
         { Foreground = { Color = workspace_color } },
-        { Text = " " .. stat .. " " },
-        { Background = { Color = colors.background } },
-        { Foreground = { Color = colors.ansi[1] } },
-        { Text = nerdfonts.ple_right_half_circle_thick .. " " },
+        { Text = " " .. stat },
     }))
 
     -- Right status
@@ -55,62 +69,62 @@ function status.update_status(config, window, pane)
         { Text = " " },
         { Background = { Color = colors.background } },
         { Foreground = { Color = colors.ansi[4] } },
-        { Text = nerdfonts.ple_left_half_circle_thick },
+        { Text = GLYPH_SEMI_CIRCLE_LEFT },
         { Background = { Color = colors.ansi[4] } },
         { Foreground = { Color = colors.background } },
-        { Text = nerdfonts.md_folder .. " " },
+        { Text = GLYPH_FOLDER .. " " },
         { Background = { Color = colors.ansi[1] } },
         { Foreground = { Color = colors.foreground } },
         { Text = " " .. cwd },
         { Background = { Color = colors.background } },
         { Foreground = { Color = colors.ansi[1] } },
-        { Text = nerdfonts.ple_right_half_circle_thick },
+        { Text = GLYPH_SEMI_CIRCLE_RIGHT },
 
-        -- { Text       = " "                                   },
-        -- { Background = { Color = colors.background }         },
-        -- { Foreground = { Color = colors.ansi[6] }            },
-        -- { Text       = nerdfonts.ple_left_half_circle_thick  },
-        -- { Background = { Color = colors.ansi[6] }            },
-        -- { Foreground = { Color = colors.background }         },
-        -- { Text       = nerdfonts.fa_user .. " "              },
-        -- { Background = { Color = colors.ansi[1] }            },
-        -- { Foreground = { Color = colors.foreground }         },
-        -- { Text       = " " .. custom.username                },
-        -- { Background = { Color = colors.background }         },
-        -- { Foreground = { Color = colors.ansi[1] }            },
-        -- { Text       = nerdfonts.ple_right_half_circle_thick },
+        { Text = " " },
+        { Background = { Color = colors.background } },
+        { Foreground = { Color = colors.ansi[6] } },
+        { Text = GLYPH_SEMI_CIRCLE_LEFT },
+        { Background = { Color = colors.ansi[6] } },
+        { Foreground = { Color = colors.background } },
+        { Text = GLYPH_USER .. " " },
+        { Background = { Color = colors.ansi[1] } },
+        { Foreground = { Color = colors.foreground } },
+        { Text = " " .. username },
+        { Background = { Color = colors.background } },
+        { Foreground = { Color = colors.ansi[1] } },
+        { Text = GLYPH_SEMI_CIRCLE_RIGHT },
 
         { Text = " " },
         { Background = { Color = colors.background } },
         { Foreground = { Color = colors.ansi[7] } },
-        { Text = nerdfonts.ple_left_half_circle_thick },
+        { Text = GLYPH_SEMI_CIRCLE_LEFT },
         { Background = { Color = colors.ansi[7] } },
         { Foreground = { Color = colors.ansi[1] } },
-        { Text = nerdfonts.cod_server .. " " },
+        { Text = GLYPH_SERVER .. " " },
         { Background = { Color = colors.ansi[1] } },
         { Foreground = { Color = colors.foreground } },
         { Text = " " .. hostname },
         { Background = { Color = colors.background } },
         { Foreground = { Color = colors.ansi[1] } },
-        { Text = nerdfonts.ple_right_half_circle_thick },
+        { Text = GLYPH_SEMI_CIRCLE_RIGHT },
 
         { Text = " " },
         { Background = { Color = colors.background } },
         { Foreground = { Color = colors.ansi[8] } },
-        { Text = nerdfonts.ple_left_half_circle_thick },
+        { Text = GLYPH_SEMI_CIRCLE_LEFT },
         { Background = { Color = colors.ansi[8] } },
         { Foreground = { Color = colors.background } },
-        { Text = nerdfonts.md_calendar_clock .. " " },
+        { Text = GLYPH_CALENDAR .. " " },
         { Background = { Color = colors.ansi[1] } },
         { Foreground = { Color = colors.foreground } },
         { Text = " " .. time },
         { Background = { Color = colors.background } },
         { Foreground = { Color = colors.ansi[1] } },
-        { Text = nerdfonts.ple_right_half_circle_thick },
+        { Text = GLYPH_SEMI_CIRCLE_RIGHT },
     }))
 end
 
-function status.format_tab_title(config, tab, max_width)
+function mod.format_tab_title(config, tab, max_width)
     local colors       = wezterm.color.get_builtin_schemes()[config.color_scheme]
     local command_args = nil
     local command      = nil
@@ -133,49 +147,49 @@ function status.format_tab_title(config, tab, max_width)
 
     -- Add terminal icon
     if tab.is_active then
-        title = nerdfonts.dev_terminal .. " " .. title
+        title = GLYPH_TERMINAL .. " " .. title
     end
 
     -- Add zoom icon
     if pane.is_zoomed then
-        title = nerdfonts.cod_zoom_in .. " " .. title
+        title = GLYPH_ZOOM_IN .. " " .. title
     end
 
     -- Add copy icon
     if string.match(pane.title, "^Copy mode:") then
-        title = nerdfonts.md_content_copy .. " " .. title
+        title = GLYPH_COPY .. " " .. title
     end
 
     -- Add icon to command
     if command then
         -- Add docker icon
         if command == "docker" or command == "podman" then
-            title = nerdfonts.linux_docker .. " " .. title
+            title = GLYPH_DOCKER .. " " .. title
         end
 
         -- Add kubernetes icon
         if command == "kind" or command == "kubectl" then
-            title = nerdfonts.md_kuberntes .. " " .. title
+            title = GLYPH_KUBERNETES .. " " .. title
         end
 
         -- Add ssh icon
         if command == "ssh" then
-            title = nerdfonts.md_remote_desktop .. " " .. title
+            title = GLYPH_REMOTE_DESKTOP .. " " .. title
         end
 
         -- Add monitoring icon
         if string.match(command, "^([bh]?)top") then
-            title = nerdfonts.md_monitor_eye .. " " .. title
+            title = GLYPH_MONITOR .. " " .. title
         end
 
         -- Add vim icon
         if string.match(command, "^(n?)vi(m?)") then
-            title = nerdfonts.dev_vim .. " " .. title
+            title = GLYPH_VIM .. " " .. title
         end
 
         -- Add watch icon
         if command == "watch" then
-            title = nerdfonts.md_eye_outline .. " " .. title
+            title = GLYPH_WATCH .. " " .. title
         end
     end
 
@@ -206,13 +220,13 @@ function status.format_tab_title(config, tab, max_width)
             { Text = " " .. tab_number },
             { Background = { Color = colors.background } },
             { Foreground = { Color = colors.ansi[5] } },
-            { Text = nerdfonts.ple_right_half_circle_thick .. " " },
+            { Text = GLYPH_SEMI_CIRCLE_RIGHT .. " " },
         }
     else
         return {
             { Background = { Color = colors.background } },
             { Foreground = { Color = colors.ansi[1] } },
-            { Text = nerdfonts.ple_left_half_circle_thick },
+            { Text = GLYPH_SEMI_CIRCLE_LEFT },
             { Background = { Color = colors.ansi[1] } },
             { Foreground = { Color = colors.foreground } },
             { Text = title .. " " },
@@ -221,9 +235,19 @@ function status.format_tab_title(config, tab, max_width)
             { Text = " " .. tab_number },
             { Background = { Color = colors.background } },
             { Foreground = { Color = colors.indexed[16] } },
-            { Text = nerdfonts.ple_right_half_circle_thick .. " " },
+            { Text = GLYPH_SEMI_CIRCLE_RIGHT .. " " },
         }
     end
 end
 
-return status
+mod.setup = function()
+    wezterm.on("update-status", function(window, pane)
+        mod.update_status(window, pane)
+    end)
+
+    wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+        mod.format_tab_title(config, tab, max_width)
+    end)
+end
+
+return mod
