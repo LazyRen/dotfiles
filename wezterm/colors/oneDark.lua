@@ -1,0 +1,17 @@
+return {
+    chalky       = "#E5C07B",
+    coral        = "#E06C75",
+    dark         = "#5C6370",
+    error        = "#F44747",
+    fountainBlue = "#56B6C2",
+    green        = "#98C379",
+    invalid      = "#FFFFFF",
+    lightDark    = "#7F848E",
+    lightWhite   = "#ABB2BF",
+    malibu       = "#61AFEF",
+    purple       = "#C678DD",
+    whiskey      = "#D19A66",
+    deepRed      = "#BE5046",
+    white        = "#E1E4E8",
+    background   = "#282C34"
+}

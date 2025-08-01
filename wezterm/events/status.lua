@@ -1,7 +1,7 @@
 local wezterm                 = require "wezterm"
 local nerdfonts               = wezterm.nerdfonts
-local appearance              = require "config.appearance"
 local functions               = require "utils.functions"
+local oneDark                 = require("colors.oneDark")
 local mod                     = {}
 
 local GLYPH_SEMI_CIRCLE_LEFT  = nerdfonts.ple_left_half_circle_thick --[[ '' ]]
@@ -21,19 +21,18 @@ local GLYPH_MONITOR           = nerdfonts.md_monitor_eye
 local GLYPH_WATCH             = nerdfonts.md_eye_outline
 
 function mod.update_status(window, pane)
-    local colors = wezterm.color.get_builtin_schemes()[appearance.color_scheme]
     -- Workspace name
     local active_key_table = window:active_key_table()
     local stat = string.format("%-8s", window:active_workspace())
-    local workspace_color = colors.ansi[3]
+    local workspace_color = oneDark.green
     local time = wezterm.strftime("%m-%d %H:%M")
 
     if active_key_table then
         stat = string.format("%-8s", active_key_table)
-        workspace_color = colors.ansi[4]
+        workspace_color = oneDark.chalky
     elseif window:leader_is_active() then
         stat = string.format("%-8s", "leader")
-        workspace_color = colors.ansi[2]
+        workspace_color = oneDark.coral
     end
 
     local username = os.getenv("USER") or os.getenv("LOGNAME") or os.getenv("USERNAME")
@@ -48,15 +47,15 @@ function mod.update_status(window, pane)
     -- Left status (left of the tab line)
     window:set_left_status(wezterm.format({
         { Attribute = { Intensity = "Bold" } },
-        { Background = { Color = colors.background } },
+        { Background = { Color = oneDark.background } },
         { Text = " " },
-        { Background = { Color = colors.background } },
+        { Background = { Color = oneDark.background } },
         { Foreground = { Color = workspace_color } },
         { Text = GLYPH_SEMI_CIRCLE_LEFT },
         { Background = { Color = workspace_color } },
-        { Foreground = { Color = colors.ansi[1] } },
+        { Foreground = { Color = oneDark.background } },
         { Text = GLYPH_TERMINAL .. " " },
-        { Background = { Color = colors.ansi[1] } },
+        { Background = { Color = oneDark.background } },
         { Foreground = { Color = workspace_color } },
         { Text = " " .. stat },
     }))
@@ -67,59 +66,59 @@ function mod.update_status(window, pane)
         -- https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html
         --
         { Text = " " },
-        { Background = { Color = colors.background } },
-        { Foreground = { Color = colors.ansi[4] } },
+        { Background = { Color = oneDark.background } },
+        { Foreground = { Color = oneDark.chalky } },
         { Text = GLYPH_SEMI_CIRCLE_LEFT },
-        { Background = { Color = colors.ansi[4] } },
-        { Foreground = { Color = colors.background } },
+        { Background = { Color = oneDark.chalky } },
+        { Foreground = { Color = oneDark.background } },
         { Text = GLYPH_FOLDER .. " " },
-        { Background = { Color = colors.ansi[1] } },
-        { Foreground = { Color = colors.foreground } },
+        { Background = { Color = oneDark.background } },
+        { Foreground = { Color = oneDark.lightWhite } },
         { Text = " " .. cwd },
-        { Background = { Color = colors.background } },
-        { Foreground = { Color = colors.ansi[1] } },
+        { Background = { Color = oneDark.background } },
+        { Foreground = { Color = oneDark.background } },
         { Text = GLYPH_SEMI_CIRCLE_RIGHT },
 
         { Text = " " },
-        { Background = { Color = colors.background } },
-        { Foreground = { Color = colors.ansi[6] } },
+        { Background = { Color = oneDark.background } },
+        { Foreground = { Color = oneDark.purple } },
         { Text = GLYPH_SEMI_CIRCLE_LEFT },
-        { Background = { Color = colors.ansi[6] } },
-        { Foreground = { Color = colors.background } },
+        { Background = { Color = oneDark.purple } },
+        { Foreground = { Color = oneDark.background } },
         { Text = GLYPH_USER .. " " },
-        { Background = { Color = colors.ansi[1] } },
-        { Foreground = { Color = colors.foreground } },
+        { Background = { Color = oneDark.background } },
+        { Foreground = { Color = oneDark.lightWhite } },
         { Text = " " .. username },
-        { Background = { Color = colors.background } },
-        { Foreground = { Color = colors.ansi[1] } },
+        { Background = { Color = oneDark.background } },
+        { Foreground = { Color = oneDark.background } },
         { Text = GLYPH_SEMI_CIRCLE_RIGHT },
 
         { Text = " " },
-        { Background = { Color = colors.background } },
-        { Foreground = { Color = colors.ansi[7] } },
+        { Background = { Color = oneDark.background } },
+        { Foreground = { Color = oneDark.fountainBlue } },
         { Text = GLYPH_SEMI_CIRCLE_LEFT },
-        { Background = { Color = colors.ansi[7] } },
-        { Foreground = { Color = colors.ansi[1] } },
+        { Background = { Color = oneDark.fountainBlue } },
+        { Foreground = { Color = oneDark.background } },
         { Text = GLYPH_SERVER .. " " },
-        { Background = { Color = colors.ansi[1] } },
-        { Foreground = { Color = colors.foreground } },
+        { Background = { Color = oneDark.background } },
+        { Foreground = { Color = oneDark.lightWhite } },
         { Text = " " .. hostname },
-        { Background = { Color = colors.background } },
-        { Foreground = { Color = colors.ansi[1] } },
+        { Background = { Color = oneDark.background } },
+        { Foreground = { Color = oneDark.background } },
         { Text = GLYPH_SEMI_CIRCLE_RIGHT },
 
         { Text = " " },
-        { Background = { Color = colors.background } },
-        { Foreground = { Color = colors.ansi[8] } },
+        { Background = { Color = oneDark.background } },
+        { Foreground = { Color = oneDark.whiskey } },
         { Text = GLYPH_SEMI_CIRCLE_LEFT },
-        { Background = { Color = colors.ansi[8] } },
-        { Foreground = { Color = colors.background } },
+        { Background = { Color = oneDark.whiskey } },
+        { Foreground = { Color = oneDark.background } },
         { Text = GLYPH_CALENDAR .. " " },
-        { Background = { Color = colors.ansi[1] } },
-        { Foreground = { Color = colors.foreground } },
+        { Background = { Color = oneDark.background } },
+        { Foreground = { Color = oneDark.lightWhite } },
         { Text = " " .. time },
-        { Background = { Color = colors.background } },
-        { Foreground = { Color = colors.ansi[1] } },
+        { Background = { Color = oneDark.background } },
+        { Foreground = { Color = oneDark.background } },
         { Text = GLYPH_SEMI_CIRCLE_RIGHT },
     }))
 end
@@ -212,29 +211,29 @@ function mod.format_tab_title(config, tab, max_width)
 
     if tab.is_active then
         return {
-            { Background = { Color = colors.background } },
-            { Foreground = { Color = colors.ansi[5] } },
+            { Background = { Color = oneDark.background } },
+            { Foreground = { Color = oneDark.malibu } },
             { Text = title .. " " },
-            { Background = { Color = colors.ansi[5] } },
-            { Foreground = { Color = colors.background } },
+            { Background = { Color = oneDark.malibu } },
+            { Foreground = { Color = oneDark.background } },
             { Text = " " .. tab_number },
-            { Background = { Color = colors.background } },
-            { Foreground = { Color = colors.ansi[5] } },
+            { Background = { Color = oneDark.background } },
+            { Foreground = { Color = oneDark.malibu } },
             { Text = GLYPH_SEMI_CIRCLE_RIGHT .. " " },
         }
     else
         return {
-            { Background = { Color = colors.background } },
-            { Foreground = { Color = colors.ansi[1] } },
+            { Background = { Color = oneDark.background } },
+            { Foreground = { Color = oneDark.background } },
             { Text = GLYPH_SEMI_CIRCLE_LEFT },
-            { Background = { Color = colors.ansi[1] } },
-            { Foreground = { Color = colors.foreground } },
+            { Background = { Color = oneDark.background } },
+            { Foreground = { Color = oneDark.lightWhite } },
             { Text = title .. " " },
-            { Background = { Color = colors.indexed[16] } },
-            { Foreground = { Color = colors.background } },
+            { Background = { Color = oneDark.whiskey } },
+            { Foreground = { Color = oneDark.background } },
             { Text = " " .. tab_number },
-            { Background = { Color = colors.background } },
-            { Foreground = { Color = colors.indexed[16] } },
+            { Background = { Color = oneDark.background } },
+            { Foreground = { Color = oneDark.whiskey } },
             { Text = GLYPH_SEMI_CIRCLE_RIGHT .. " " },
         }
     end

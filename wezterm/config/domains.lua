@@ -13,7 +13,7 @@ for host, contents in pairs(wezterm.enumerate_ssh_hosts()) do
     })
 end
 
-mod.unix_domains = {}
+mod.unix_domains = { { name = "unix" } }
 
 mod.wsl_domains = {}
 
