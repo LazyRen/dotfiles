@@ -13,5 +13,5 @@ return {
     whiskey      = "#D19A66",
     deepRed      = "#BE5046",
     white        = "#E1E4E8",
-    background   = "#282C34"
+    background   = "#282C34",
 }

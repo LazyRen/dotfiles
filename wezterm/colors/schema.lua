@@ -1,4 +1,5 @@
-local oneDark = require("colors.oneDark")
+local oneDark    = require("colors.oneDark")
+local catppuccin = require("colors.CatppuccinMocha")
 
 local colorscheme = {
    foreground    = oneDark.lightWhite,
@@ -25,17 +26,17 @@ local colorscheme = {
       oneDark.malibu,
       oneDark.purple,
       oneDark.fountainBlue,
-      oneDark.lightWhite
+      oneDark.lightWhite,
    },
    brights = {
       oneDark.lightDark,
-      oneDark.coral,
-      oneDark.green,
-      oneDark.chalky,
-      oneDark.malibu,
-      oneDark.purple,
-      oneDark.fountainBlue,
-      oneDark.white
+      catppuccin.red,
+      catppuccin.green,
+      catppuccin.yellow,
+      catppuccin.blue,
+      catppuccin.mauve,
+      catppuccin.sapphire,
+      oneDark.white,
    },
    tab_bar = {
       background = oneDark.background,
