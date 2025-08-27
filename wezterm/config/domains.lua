@@ -1,6 +1,8 @@
 local wezterm = require "wezterm"
 local mod = {}
 
+mod.default_workspace = "local"
+
 mod.ssh_domains = {}
 for host, contents in pairs(wezterm.enumerate_ssh_hosts()) do
     table.insert(mod.ssh_domains, {
@@ -12,8 +14,6 @@ for host, contents in pairs(wezterm.enumerate_ssh_hosts()) do
         assume_shell = "Posix"
     })
 end
-
-mod.unix_domains = { { name = "unix" } }
 
 mod.wsl_domains = {}
 

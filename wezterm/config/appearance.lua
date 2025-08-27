@@ -5,7 +5,7 @@ mod.colors = colors
 
 mod.hide_tab_bar_if_only_one_tab = false
 mod.inactive_pane_hsb = { brightness = 0.75, hue = 1.0, saturation = 1.0 }
-mod.scrollback_lines = 1000000
+mod.scrollback_lines = 10000000
 mod.enable_scroll_bar = true
 mod.show_new_tab_button_in_tab_bar = false
 mod.show_tab_index_in_tab_bar = true

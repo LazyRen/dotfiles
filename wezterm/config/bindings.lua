@@ -1,5 +1,6 @@
 local wezterm = require "wezterm"
 local workspaceSwitcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+local domains = wezterm.plugin.require("https://github.com/DavidRR-F/quick_domains.wezterm")
 local act = wezterm.action
 local mod = {}
 
@@ -30,7 +31,8 @@ mod.keys = {
     { mods = "LEADER|SHIFT", key = "$",          action = act.PromptInputLine { description = wezterm.format { { Attribute = { Intensity = "Bold" } }, { Foreground = { AnsiColor = "Fuchsia" } }, { Text = "Enter new name for workspace" } }, action = wezterm.action_callback(function(window, pane, line) if line then wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line) end end) } },
     -- { mods = "LEADER", key = "s",          action = act.ShowLauncherArgs { flags = "WORKSPACES", title = "Workspace Selection" } }, -- Use smart_workspace_switcher instead
     { mods = "LEADER",       key = "s",          action = workspaceSwitcher.switch_workspace() },
-    { mods = "LEADER",       key = "o",          action = act.PromptInputLine { description = wezterm.format { { Attribute = { Intensity = "Bold" } }, { Foreground = { AnsiColor = "Fuchsia" } }, { Text = "Enter a domain name to open" } }, action = wezterm.action_callback(function(window, pane, line) if line then window:mux_window():spawn_tab { domain = { DomainName = line } } end end) } },
+    -- Use quick_domains instead
+    -- { mods = "LEADER",       key = "o",          action = act.PromptInputLine { description = wezterm.format { { Attribute = { Intensity = "Bold" } }, { Foreground = { AnsiColor = "Fuchsia" } }, { Text = "Enter a domain name to open" } }, action = wezterm.action_callback(function(window, pane, line) if line then window:mux_window():spawn_tab { domain = { DomainName = line } } end end) } },
     { mods = "LEADER",       key = "d",          action = act.DetachDomain "CurrentPaneDomain" },
 
     { mods = "NONE",         key = "PageUp",     action = wezterm.action({ ScrollByPage = -1 }) },
@@ -55,5 +57,16 @@ mod.key_tables = {
         { key = "Escape",     action = "PopKeyTable" }, -- Cancel the mode by pressing escape
     },
 }
+
+domains.apply_to_config(mod,
+{
+    keys = {
+        attach = {
+            key  = 'o',
+            mods = 'LEADER',
+            tbl  = ''
+        }
+    }
+})
 
 return mod
