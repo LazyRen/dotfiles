@@ -2,12 +2,18 @@
 
 ## Formula
 
-- age
 - autojump
+- colima
+- curl
 - eza
+- fd
 - fzf
 - git
+- htop
 - mosh
+- ripgrep
+- tmux
+- wget
 - zoxide
 - zsh
 
@@ -15,7 +21,6 @@
 
 - alt-tab
 - font-jetbrains-mono-nerd-font
-- font-sarasa-nerd-font-ttc
 - iina
 - istat-menus
 - jettison
@@ -27,4 +32,4 @@
 - switchresx
 - ticktick
 - typora
-- wezterm
+- wezterm@nightly

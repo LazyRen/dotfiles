@@ -1,7 +1,13 @@
 local wezterm = require "wezterm"
 local mod = {}
 
-mod.default_workspace = "local"
+mod.default_workspace = "mac"
+
+mod.unix_domains = {
+    {
+        name = "mac",
+    },
+}
 
 mod.ssh_domains = {}
 for host, contents in pairs(wezterm.enumerate_ssh_hosts()) do
