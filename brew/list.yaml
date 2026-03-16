@@ -12,6 +12,7 @@ formula:
   - htop
   - mise
   - ripgrep
+  - starship
   - stow
   - tlrc
   - uv

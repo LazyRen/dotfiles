@@ -44,10 +44,6 @@ function mod.update_status(window, pane)
         hostname = cwd_uri.host or wezterm.hostname()
     end
 
-    if hostname == "ccde1gl5017" then
-        time = wezterm.strftime_utc("%m-%d %H:%M")
-    end
-
     -- Left status (left of the tab line)
     window:set_left_status(wezterm.format({
         { Attribute = { Intensity = "Bold" } },

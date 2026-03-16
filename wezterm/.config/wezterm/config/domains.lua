@@ -9,14 +9,6 @@ mod.unix_domains = {
     },
 }
 
--- wezterm.on("gui-startup", function()
---     local mux = wezterm.mux
---     local domain = mux.get_domain("germany")
---     if domain then
---         domain:attach()
---     end
--- end)
-
 mod.ssh_domains = {}
 for host, contents in pairs(wezterm.enumerate_ssh_hosts()) do
     table.insert(mod.ssh_domains, {

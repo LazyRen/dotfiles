@@ -16,6 +16,7 @@ scrollback-limit = 10000000
 clipboard-trim-trailing-spaces = true
 window-save-state = always
 cursor-click-to-move = true
+cursor-style-blink = false
 
 quit-after-last-window-closed = true
 confirm-close-surface = false

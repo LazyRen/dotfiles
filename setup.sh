@@ -40,6 +40,20 @@ if [[ " ${apps[*]} " == *" zsh "* ]] && [[ ! -d "$HOME/.oh-my-zsh" ]]; then
 fi
 
 # --- Stow configs ---
+# Backup existing files that would conflict with stow
+backup_dir="$DOTFILES_DIR/.backup/$(date +%Y%m%d_%H%M%S)"
+stow_output=$(stow --no --target="$HOME" --dir="$DOTFILES_DIR" "${apps[@]}" 2>&1)
+if echo "$stow_output" | grep -q "existing target is"; then
+  mkdir -p "$backup_dir"
+  echo "$stow_output" | grep "existing target is" | sed 's/.*: //' | while read -r file; do
+    target="$HOME/$file"
+    if [[ -e "$target" && ! -L "$target" ]]; then
+      mkdir -p "$backup_dir/$(dirname "$file")"
+      mv "$target" "$backup_dir/$file"
+      echo "Backed up $file → $backup_dir/$file"
+    fi
+  done
+fi
 stow --restow --target="$HOME" --dir="$DOTFILES_DIR" "${apps[@]}"
 
 # --- Post-setup hooks ---
