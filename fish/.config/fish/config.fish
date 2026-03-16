@@ -1,3 +1,11 @@
+# Initialize Homebrew
+for brewpath in /opt/homebrew /usr/local /home/linuxbrew/.linuxbrew
+    if test -x $brewpath/bin/brew
+        eval ($brewpath/bin/brew shellenv fish)
+        break
+    end
+end
+
 if status is-interactive
     zoxide init fish | source
     starship init fish | source

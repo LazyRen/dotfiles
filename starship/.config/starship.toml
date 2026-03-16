@@ -87,7 +87,7 @@ style = "yellow"
 [username]
 show_always = false
 format = "[$user@]($style)"
-style_user = "bright-black"
+style_user = "yellow"
 style_root = "red bold"
 
 [time]
