@@ -1,7 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$username\
 $directory\
 $git_branch\
 $git_state\
@@ -11,11 +10,16 @@ $cmd_duration\
 $jobs\
 $status\
 $python\
+$fill\
+$username\
+$hostname\
+$time\
 $line_break\
 $sudo\
 $character"""
 
-right_format = "$hostname$time"
+[fill]
+symbol = " "
 
 [directory]
 truncation_length = 10
@@ -71,6 +75,12 @@ ssh_only = true
 format = "[$hostname]($style) "
 style = "yellow"
 
+[username]
+# show_always = true
+format = "[$user]($style) "
+style_user = "yellow bold"
+style_root = "red bold"
+
 [time]
 disabled = false
 format = "[$time]($style)"
@@ -89,7 +99,6 @@ symbol = "🔓"
 style = "yellow"
 
 [python]
-python_binary = [["uv", "run", "--no-python-downloads", "--no-project", "python"]]
 format = "[$virtualenv]($style) "
 style = "bright-black"
 detect_extensions = []
