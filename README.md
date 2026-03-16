@@ -5,13 +5,44 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/).
 ## Stack
 
 | Tool | Purpose |
-|------|---------|
-| [Ghostty](https://ghostty.org/) | Terminal emulator |
+| ------ | --------- |
 | [Fish](https://fishshell.com/) | Shell |
+| [Ghostty](https://ghostty.org/) | Terminal emulator |
+| [Homebrew](https://brew.sh/) | Package manager |
 | [Starship](https://starship.rs/) | Prompt |
 | [Zellij](https://zellij.dev/) | Terminal multiplexer |
-| [Atuin](https://atuin.sh/) | Shell history |
-| [Mise](https://mise.jdx.dev/) | Runtime version manager |
+
+## Color Palette
+
+Based on
+Ghostty theme: [**Atom One Dark**](https://iterm2colorschemes.com/)
+and
+VS Code theme: [**One Dark Pro**](https://github.com/Binaryify/OneDark-Pro)
+with [personal modifications](ghostty/.config/ghostty/config.ghostty#L4-L14)
+
+![Terminal Screenshot](terminal.png)
+
+| Color | Hex | Preview |
+| ------- | ----- | --------- |
+| Black | `#282c34` | ![#282c34](https://img.shields.io/badge/%20-282c34?style=flat-square&color=282c34) |
+| Red | `#e06c75` | ![#e06c75](https://img.shields.io/badge/%20-e06c75?style=flat-square&color=e06c75) |
+| Green | `#98c379` | ![#98c379](https://img.shields.io/badge/%20-98c379?style=flat-square&color=98c379) |
+| Yellow | `#e5c07b` | ![#e5c07b](https://img.shields.io/badge/%20-e5c07b?style=flat-square&color=e5c07b) |
+| Blue | `#61afef` | ![#61afef](https://img.shields.io/badge/%20-61afef?style=flat-square&color=61afef) |
+| Magenta | `#c678dd` | ![#c678dd](https://img.shields.io/badge/%20-c678dd?style=flat-square&color=c678dd) |
+| Cyan | `#56b6c2` | ![#56b6c2](https://img.shields.io/badge/%20-56b6c2?style=flat-square&color=56b6c2) |
+| White | `#abb2bf` | ![#abb2bf](https://img.shields.io/badge/%20-abb2bf?style=flat-square&color=abb2bf) |
+| Bright Black | `#5c6370` | ![#5c6370](https://img.shields.io/badge/%20-5c6370?style=flat-square&color=5c6370) |
+| Bright Red | `#e57373` | ![#e57373](https://img.shields.io/badge/%20-e57373?style=flat-square&color=e57373) |
+| Bright Green | `#b5d8a0` | ![#b5d8a0](https://img.shields.io/badge/%20-b5d8a0?style=flat-square&color=b5d8a0) |
+| Bright Yellow | `#efd9a8` | ![#efd9a8](https://img.shields.io/badge/%20-efd9a8?style=flat-square&color=efd9a8) |
+| Bright Blue | `#82b1ff` | ![#82b1ff](https://img.shields.io/badge/%20-82b1ff?style=flat-square&color=82b1ff) |
+| Bright Magenta | `#b392f0` | ![#b392f0](https://img.shields.io/badge/%20-b392f0?style=flat-square&color=b392f0) |
+| Bright Cyan | `#80ccd5` | ![#80ccd5](https://img.shields.io/badge/%20-80ccd5?style=flat-square&color=80ccd5) |
+| Bright White | `#e1e4e8` | ![#e1e4e8](https://img.shields.io/badge/%20-e1e4e8?style=flat-square&color=e1e4e8) |
+| Foreground | `#abb2bf` | ![#abb2bf](https://img.shields.io/badge/%20-abb2bf?style=flat-square&color=abb2bf) |
+| Background | `#282c34` | ![#282c34](https://img.shields.io/badge/%20-282c34?style=flat-square&color=282c34) |
+| Selection | `#3e4451` | ![#3e4451](https://img.shields.io/badge/%20-3e4451?style=flat-square&color=3e4451) |
 
 ## Install
 
@@ -25,22 +56,16 @@ cd dotfiles
 `config.yaml` controls which apps are installed. Comment out any app to skip it.
 
 `setup.sh` will:
+
 1. Install Homebrew packages from `brew/list.yaml`
 2. Symlink configured apps to `$HOME` via stow
 
 ## Structure
 
-```
+```text
 config.yaml          # Apps to install (comment out to disable)
 brew/list.yaml       # Homebrew formulas and casks
 setup.sh             # Main installer
-
-fish/                # Fish shell + fisher plugins
-ghostty/             # Ghostty terminal
-starship/            # Starship prompt
-zellij/              # Zellij multiplexer + WASM plugins
-wezterm/             # Wezterm terminal (optional)
-zsh/                 # Zsh + oh-my-zsh (optional)
 ```
 
 Each directory mirrors `$HOME` for stow (e.g., `fish/.config/fish/` → `~/.config/fish/`).

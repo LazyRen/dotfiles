@@ -2,6 +2,7 @@ apps:
   - fish
   - ghostty
   - starship
+  # - vscode # Only cspell user dictionary
   # - wezterm
   - zellij
   # - zsh

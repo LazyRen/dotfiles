@@ -5,6 +5,16 @@ background = 282c34
 selection-background = 3e4451
 palette = 0=#282c34
 palette = 8=#5c6370
+palette = 9=#e57373
+palette = 10=#b5d8a0
+palette = 11=#efd9a8
+palette = 12=#82b1ff
+palette = 13=#b392f0
+palette = 14=#80ccd5
+palette = 15=#e1e4e8
+
+window-padding-x = 10
+window-padding-y = 10
 
 macos-titlebar-style = tabs
 unfocused-split-opacity = 0.75
@@ -38,3 +48,10 @@ keybind = ctrl+a>arrow_up=goto_split:up
 keybind = ctrl+a>==equalize_splits
 keybind = ctrl+a>minus=new_split:down
 keybind = ctrl+a>backslash=new_split:right
+keybind = ctrl+a>x=close_surface
+keybind = ctrl+a>z=toggle_split_zoom
+keybind = ctrl+a>c=new_tab
+keybind = ctrl+a>n=next_tab
+keybind = ctrl+a>p=previous_tab
+keybind = ctrl+a>open_bracket=rotate_split:counter_clockwise
+keybind = ctrl+a>close_bracket=rotate_split:clockwise
