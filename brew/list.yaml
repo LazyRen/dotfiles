@@ -1,0 +1,37 @@
+formula:
+  - atuin
+  - bat
+  - colima
+  - curl
+  - eza
+  - fd
+  - fish
+  - fzf
+  - git
+  - git-delta
+  - htop
+  - mise
+  - ripgrep
+  - stow
+  - tlrc
+  - uv
+  - wget
+  - zellij
+  - zoxide
+  - zsh
+
+cask:
+  - alt-tab
+  - font-jetbrains-mono-nerd-font
+  - ghostty
+  - iina
+  - istat-menus
+  - jettison
+  - karabiner-elements
+  - keka
+  - obsidian
+  - postman
+  - switchresx
+  - ticktick
+  - typora
+  - wezterm@nightly

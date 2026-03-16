@@ -1,0 +1,7 @@
+apps:
+  - fish
+  - ghostty
+  - starship
+  # - wezterm
+  - zellij
+  # - zsh

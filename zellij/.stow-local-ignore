@@ -1,0 +1,21 @@
+# Default stow ignores (required because .stow-local-ignore replaces built-in defaults)
+RCS
+.+,v
+CVS
+\.\#.+
+\.cvsignore
+\.svn
+_darcs
+\.hg
+\.git
+\.gitignore
+\.gitmodules
+.+~
+\#.*\#
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+# Custom
+\.DS_Store
+setup\.sh
