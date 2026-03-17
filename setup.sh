@@ -3,6 +3,14 @@ set -euo pipefail
 
 DOTFILES_DIR="$(realpath "$(dirname "$0")")"
 IS_MAC=$([[ "$(uname)" == "Darwin" ]] && echo true || echo false)
+SKIP_BREW=false
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --skip-brew) SKIP_BREW=true; shift ;;
+    *) echo "Unknown option: $1"; exit 1 ;;
+  esac
+done
 
 # --- Helpers ---
 parse_yaml_list() {
@@ -77,10 +85,14 @@ run_hooks() {
 # --- Main ---
 mapfile -t apps < <(parse_yaml_list "$DOTFILES_DIR/config.yaml")
 
-if ensure_brew; then
-  install_brew_packages
+if ! $SKIP_BREW; then
+  if ensure_brew; then
+    install_brew_packages
+  else
+    echo "WARNING: brew not found, skipping package installation"
+  fi
 else
-  echo "WARNING: brew not found, skipping package installation"
+  echo "Skipping brew (--skip-brew)"
 fi
 
 if [[ " ${apps[*]} " == *" zsh "* ]] && [[ ! -d "$HOME/.oh-my-zsh" ]]; then

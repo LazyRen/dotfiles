@@ -53,12 +53,19 @@ cd dotfiles
 ./setup.sh
 ```
 
-`config.yaml` controls which apps are installed. Comment out any app to skip it.
+`config.yaml` controls which apps are installed. Comment out any
+app to skip it.
 
 `setup.sh` will:
 
 1. Install Homebrew packages from `brew/list.yaml`
 2. Symlink configured apps to `$HOME` via stow
+
+Re-run after pulling config-only changes:
+
+```bash
+./setup.sh --skip-brew
+```
 
 ## Structure
 
@@ -77,3 +84,9 @@ Each directory mirrors `$HOME` for stow (e.g., `fish/.config/fish/` → `~/.conf
 3. Run `./setup.sh`
 
 If the app needs post-stow setup, add an executable `setup.sh` in the app directory and create a `.stow-local-ignore` file (see `fish/.stow-local-ignore` for reference).
+
+## Local config
+
+Fish supports per-machine overrides via `~/.config/fish/conf.d/local.fish`.
+This file is gitignored and created automatically by `fish/setup.sh` on fresh clones.
+Edit it freely — changes stay local and won't appear in `git status`.
