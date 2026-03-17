@@ -13,7 +13,7 @@ abbr -a gb "git branch"
 abbr -a gba "git branch -a"
 abbr -a gc "git commit"
 abbr -a gca "git commit --amend"
-abbr -a gcm "git commit -m"
+abbr -a gcm --set-cursor 'git commit -m "%"'
 abbr -a gco "git checkout"
 abbr -a gd "git diff"
 abbr -a glog "git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd)%C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -27,7 +27,12 @@ abbr -a gds "git diff --staged"
 abbr -a grb "git rebase"
 abbr -a grs "git restore"
 abbr -a gsw "git switch"
-abbr -a gresetremote "git reset --hard origin/$(git branch --show-current)"
-abbr -a gresetlastcommmit "git reset --hard $(git log --format="%H" -n 1)"
+function gresetremote
+    git reset --hard origin/(git branch --show-current)
+end
 
-abbr -a opus "claude --model "opus[1m]" --dangerously-skip-permissions"
+function gresetlastcommit
+    git reset --hard HEAD~1
+end
+
+abbr -a opus 'claude --model "opus[1m]" --dangerously-skip-permissions'
