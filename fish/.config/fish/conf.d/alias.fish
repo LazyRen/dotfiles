@@ -27,5 +27,7 @@ abbr -a gds "git diff --staged"
 abbr -a grb "git rebase"
 abbr -a grs "git restore"
 abbr -a gsw "git switch"
+abbr -a gresetremote "git reset --hard origin/$(git branch --show-current)"
+abbr -a gresetlastcommmit "git reset --hard $(git log --format="%H" -n 1)"
 
 abbr -a opus "claude --model "opus[1m]" --dangerously-skip-permissions"
