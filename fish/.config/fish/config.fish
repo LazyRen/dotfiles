@@ -6,6 +6,8 @@ for brewpath in /opt/homebrew /usr/local /home/linuxbrew/.linuxbrew
     end
 end
 
+fish_add_path $HOME/.local/bin
+
 if status is-interactive
     zoxide init fish | source
     starship init fish | source
