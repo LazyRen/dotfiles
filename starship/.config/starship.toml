@@ -70,7 +70,7 @@ format = "([+$added](green) )([-$deleted](red) )"
 
 [cmd_duration]
 format = "[$duration]($style) "
-style = "yellow"
+style = "bright-yellow"
 min_time = 2_000
 
 [jobs]
