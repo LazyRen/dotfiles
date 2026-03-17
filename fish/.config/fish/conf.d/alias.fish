@@ -15,24 +15,27 @@ abbr -a gc "git commit"
 abbr -a gca "git commit --amend"
 abbr -a gcm --set-cursor 'git commit -m "%"'
 abbr -a gco "git checkout"
+abbr -a gcp "git cherry-pick"
+abbr -a gcpc "git cherry-pick --continue"
+abbr -a gcpa "git cherry-pick --abort"
 abbr -a gd "git diff"
-abbr -a glog "git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd)%C(bold blue)<%an>%Creset' --abbrev-commit"
+abbr -a gds "git diff --staged"
+abbr -a gf "git fetch"
+abbr -a gl "git log --color --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cd)%C(bold blue) <%an>%Creset' --abbrev-commit --date=short"
 abbr -a gm "git merge"
 abbr -a gp "git push"
 abbr -a gpl "git pull"
+abbr -a grb "git rebase"
+abbr -a grbc "git rebase --continue"
+abbr -a grba "git rebase --abort"
+abbr -a gresetlastcommit "git reset --hard HEAD~1"
+abbr -a grs "git restore"
+abbr -a grss "git restore --staged"
 abbr -a gs "git status"
+abbr -a gsh "git show"
 abbr -a gst "git stash"
 abbr -a gstp "git stash pop"
-abbr -a gds "git diff --staged"
-abbr -a grb "git rebase"
-abbr -a grs "git restore"
+abbr -a gstl "git stash list"
 abbr -a gsw "git switch"
-function gresetremote
-    git reset --hard origin/(git branch --show-current)
-end
-
-function gresetlastcommit
-    git reset --hard HEAD~1
-end
 
 abbr -a opus 'claude --model "opus[1m]" --dangerously-skip-permissions'
