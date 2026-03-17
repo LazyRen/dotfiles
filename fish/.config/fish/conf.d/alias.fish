@@ -6,6 +6,8 @@ abbr -a cat "bat"
 
 abbr -a za "zellij attach"
 
+ abbr -a zi "__zoxide_zi"
+
 # git
 abbr -a ga "git add"
 abbr -a gaa "git add --all"

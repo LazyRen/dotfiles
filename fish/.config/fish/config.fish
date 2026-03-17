@@ -7,7 +7,7 @@ for brewpath in /opt/homebrew /usr/local /home/linuxbrew/.linuxbrew
 end
 
 if status is-interactive
-    zoxide init fish | source
+    zoxide init fish --cmd cd | source
     starship init fish | source
     fzf --fish | source
     atuin init fish | source
