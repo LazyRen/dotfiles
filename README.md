@@ -85,6 +85,17 @@ Each directory mirrors `$HOME` for stow (e.g., `fish/.config/fish/` → `~/.conf
 
 If the app needs post-stow setup, add an executable `setup.sh` in the app directory and create a `.stow-local-ignore` file (see `fish/.stow-local-ignore` for reference).
 
+## SSH Terminfo
+
+Ghostty uses `xterm-ghostty` as its `TERM` value, in case remote hosts won't recognize by default.
+Copy the terminfo entry before connecting:
+
+```bash
+infocmp -x | ssh <user@address> -- tic -x -
+```
+
+See [Ghostty SSH documentation](https://ghostty.org/docs/help/terminfo#ssh) for details.
+
 ## Local config
 
 Fish supports per-machine overrides via `~/.config/fish/conf.d/local.fish`.
