@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 PLUGIN_DIR="$HOME/.config/zellij/plugins"
 mkdir -p "$PLUGIN_DIR"

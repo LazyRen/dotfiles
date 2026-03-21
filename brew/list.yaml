@@ -22,7 +22,10 @@ formula:
   - zsh
 
 cask:
+  - alfred
   - alt-tab
+  - bartender
+  - bettertouchtool
   - font-jetbrains-mono-nerd-font
   - ghostty
   - iina
@@ -30,6 +33,8 @@ cask:
   - jettison
   - karabiner-elements
   - keka
+  - naver-whale
+  - nikitabobko/tap/aerospace
   - obsidian
   - postman
   - switchresx

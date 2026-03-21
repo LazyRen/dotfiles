@@ -5,4 +5,6 @@ apps:
   # - vscode # Only cspell user dictionary
   # - wezterm
   - zellij
+  - karabiner
+  - os/mac
   # - zsh

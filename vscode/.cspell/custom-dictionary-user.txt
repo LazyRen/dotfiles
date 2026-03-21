@@ -12,6 +12,7 @@ hyperscalar
 icebergcatalog
 Ilju
 Jooyeon
+keybind
 kubeconfig
 Lakehouse
 NVARCHAR

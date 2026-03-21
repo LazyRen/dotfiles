@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DOTFILES_DIR="$(realpath "$(dirname "$0")")"
-IS_MAC=$([[ "$(uname)" == "Darwin" ]] && echo true || echo false)
+DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+IS_MAC=false
+[[ "$(uname)" == "Darwin" ]] && IS_MAC=true
 SKIP_BREW=false
 
 while [[ $# -gt 0 ]]; do
@@ -83,7 +84,24 @@ run_hooks() {
 }
 
 # --- Main ---
-mapfile -t apps < <(parse_yaml_list "$DOTFILES_DIR/config.yaml")
+apps=()
+while IFS= read -r app; do
+  apps+=("$app")
+done < <(parse_yaml_list "$DOTFILES_DIR/config.yaml")
+
+# Filter OS-specific packages
+filtered=()
+for app in "${apps[@]}"; do
+  [[ "$app" == os/mac && "$IS_MAC" == false ]] && continue
+  filtered+=("$app")
+done
+apps=("${filtered[@]}")
+
+# Split into stowable (top-level) and hook-only (nested)
+stow_apps=()
+for app in "${apps[@]}"; do
+  [[ "$app" != */* ]] && stow_apps+=("$app")
+done
 
 if ! $SKIP_BREW; then
   if ensure_brew; then
@@ -95,10 +113,7 @@ else
   echo "Skipping brew (--skip-brew)"
 fi
 
-if [[ " ${apps[*]} " == *" zsh "* ]] && [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-  echo "Installing Oh My Zsh..."
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+if [[ ${#stow_apps[@]} -gt 0 ]]; then
+  backup_and_stow "${stow_apps[@]}"
 fi
-
-backup_and_stow "${apps[@]}"
 run_hooks "${apps[@]}"

@@ -45,13 +45,13 @@ truncation_symbol = "…"
 format = "[$all_status$ahead_behind]($style)"
 style = ""
 conflicted = "[~$count](red) "
-stashed = "[*$count](green) "
+stashed = "[≡$count](green) "
 staged = "[+$count](yellow) "
 modified = "[!$count](yellow) "
 untracked = "[?$count](cyan) "
 ahead = "[⇡$count](green)"
 behind = "[⇣$count](green)"
-diverged = "[⇣${behind_count}⇡${ahead_count}](green)"
+diverged = "[⇕⇣${behind_count}⇡${ahead_count}](green)"
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
