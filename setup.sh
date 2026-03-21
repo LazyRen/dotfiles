@@ -42,11 +42,13 @@ install_brew_packages() {
     case "$line" in
       "formula:") section="formula" ;;
       "cask:")    section="cask" ;;
+      "link:")    section="link" ;;
       "  - "*)
         local pkg="${line#  - }"
         case "$section" in
           formula) brew install "$pkg" ;;
           cask)    $IS_MAC && brew install --cask "$pkg" ;;
+          link)    brew link "$pkg" --force --overwrite ;;
         esac
         ;;
     esac

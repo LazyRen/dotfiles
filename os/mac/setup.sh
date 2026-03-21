@@ -114,13 +114,6 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 # Save screenshots to ~/Screenshot
 defaults write com.apple.screencapture location ~/Screenshot
 
-# --- sudo commands ---
-# Prompt once for all sudo operations
-sudo -v
-sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool FALSE
-# Prevent sleep when display is off (for clamshell mode)
-sudo pmset -c sleep 0
-
 # --- Restart affected apps ---
 killall Finder Dock SystemUIServer ControlCenter 2>/dev/null || true
 

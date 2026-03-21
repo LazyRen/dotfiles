@@ -5,18 +5,27 @@ formula:
   - curl
   - eza
   - fd
+  - ffmpeg-full
   - fish
   - fzf
   - git
   - git-delta
+  - glow
   - htop
+  - imagemagick-full
+  - jq
+  - mediainfo
   - mise
+  - poppler
+  - resvg
   - ripgrep
+  - sevenzip
   - starship
   - stow
   - tlrc
   - uv
   - wget
+  - yazi
   - zellij
   - zoxide
   - zsh
@@ -27,6 +36,7 @@ cask:
   - bartender
   - bettertouchtool
   - font-jetbrains-mono-nerd-font
+  - font-symbols-only-nerd-font
   - ghostty
   - iina
   - istat-menus
@@ -41,3 +51,7 @@ cask:
   - ticktick
   - typora
   - wezterm@nightly
+
+link:
+  - ffmpeg-full
+  - imagemagick-full

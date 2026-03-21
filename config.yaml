@@ -4,6 +4,7 @@ apps:
   - starship
   # - vscode # Only cspell user dictionary
   # - wezterm
+  - yazi
   - zellij
   - karabiner
   - os/mac

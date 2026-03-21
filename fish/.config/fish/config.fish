@@ -18,6 +18,6 @@ if status is-interactive
     command -q zoxide && zoxide init fish | source
     command -q starship && starship init fish | source
     command -q fzf && fzf --fish | source
-    command -q atuin && atuin init fish | source
+    command -q atuin && set -gx ATUIN_NOBIND true && atuin init fish | source && bind \cr _atuin_search
     command -q mise && mise activate fish | source
 end

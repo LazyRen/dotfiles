@@ -1,0 +1,18 @@
+[mgr]
+prepend_keymap = [
+  { on = "<Enter>", run = "plugin smart-enter", desc = "Enter directory or open file" },
+  { on = "f", run = "plugin fg --args='fzf'", desc = "Find file by fzf" },
+  { on = "F", run = "plugin fg --args='rg'", desc = "Find file by ripgrep" },
+  { on = "z", run = "plugin zoxide", desc = "Jump with zoxide" },
+  { on = "T", run = "plugin max-preview", desc = "Toggle max preview" },
+  { on = "<C-o>", run = 'shell -- open .', desc = "Open Finder here" },
+  { on = "y", run = ['shell -- echo "$@" | pbcopy', "yank"], desc = "Yank and copy path to clipboard" },
+  { on = "p", run = "plugin smart-paste", desc = "Paste into hovered dir or cwd" },
+  { on = ["g", "r"], run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"', desc = "cd to git root" },
+  { on = "<C-p>", run = "shell -- qlmanage -p %s", desc = "Quick Look preview" },
+]
+
+[input]
+prepend_keymap = [
+  { on = "<Esc>", run = "close", desc = "Cancel input" },
+]

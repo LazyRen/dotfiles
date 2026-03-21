@@ -1,0 +1,29 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-paste"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:max-preview"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:zoxide"
+
+[[plugin.deps]]
+use = "Rolv-Apneseth/starship"
+
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+
+[[plugin.deps]]
+use = "DreamMaoMao/fg"
+
+[[flavor.deps]]
+use = "BennyOe/onedark"

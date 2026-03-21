@@ -5,12 +5,21 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/).
 ## Stack
 
 | Tool | Purpose |
-| ------ | --------- |
+| --- | --- |
 | [Fish](https://fishshell.com/) | Shell |
 | [Ghostty](https://ghostty.org/) | Terminal emulator |
 | [Homebrew](https://brew.sh/) | Package manager |
 | [Starship](https://starship.rs/) | Prompt |
+| [Yazi](https://yazi-rs.github.io/) | File manager |
 | [Zellij](https://zellij.dev/) | Terminal multiplexer |
+
+### macOS Apps
+
+| App | Purpose |
+| --- | --- |
+| [AltTab](https://alt-tab-macos.netlify.app/) | Windows-style alt-tab |
+| [BetterTouchTool](https://folivora.ai/) | Keyboard/trackpad customization |
+| [Karabiner-Elements](https://karabiner-elements.pqrs.org/) | Key remapping |
 
 ## Color Palette
 
@@ -23,7 +32,7 @@ with [personal modifications](ghostty/.config/ghostty/config.ghostty#L4-L14)
 ![Terminal Screenshot](terminal.png)
 
 | Color | Hex | Preview |
-| ------- | ----- | --------- |
+| --- | --- | --- |
 | Black | `#282c34` | ![#282c34](https://img.shields.io/badge/%20-282c34?style=flat-square&color=282c34) |
 | Red | `#e06c75` | ![#e06c75](https://img.shields.io/badge/%20-e06c75?style=flat-square&color=e06c75) |
 | Green | `#98c379` | ![#98c379](https://img.shields.io/badge/%20-98c379?style=flat-square&color=98c379) |
@@ -60,6 +69,7 @@ app to skip it.
 
 1. Install Homebrew packages from `brew/list.yaml`
 2. Symlink configured apps to `$HOME` via stow
+3. Run per-app `setup.sh` hooks (fisher plugins, yazi packages, zellij plugins, etc.)
 
 Re-run after pulling config-only changes:
 
@@ -71,11 +81,27 @@ Re-run after pulling config-only changes:
 
 ```text
 config.yaml          # Apps to install (comment out to disable)
-brew/list.yaml       # Homebrew formulas and casks
+brew/list.yaml       # Homebrew formulas, casks, and link targets
 setup.sh             # Main installer
+
+# Stow packages (symlinked to $HOME)
+fish/                # Fish shell config, functions, fisher plugins
+ghostty/             # Ghostty terminal config
+karabiner/           # Karabiner-Elements key remapping
+starship/            # Starship prompt config
+yazi/                # Yazi file manager config and plugins
+zellij/              # Zellij multiplexer config, layouts, plugins
+
+# macOS-specific (hook-only, not stowed)
+os/mac/              # macOS defaults, xcode-select, app imports
+
+# App config imports (not stowed, referenced by os/mac/setup.sh)
+alttab/              # AltTab preferences plist
+bettertouchtool/     # BetterTouchTool preset
 ```
 
 Each directory mirrors `$HOME` for stow (e.g., `fish/.config/fish/` → `~/.config/fish/`).
+Nested paths like `os/mac` are hook-only — they run `setup.sh` but are not stowed.
 
 ## Adding a new app
 
@@ -84,6 +110,16 @@ Each directory mirrors `$HOME` for stow (e.g., `fish/.config/fish/` → `~/.conf
 3. Run `./setup.sh`
 
 If the app needs post-stow setup, add an executable `setup.sh` in the app directory and create a `.stow-local-ignore` file (see `fish/.stow-local-ignore` for reference).
+
+## macOS Setup
+
+`os/mac/setup.sh` configures macOS system preferences via `defaults write`, including:
+
+- Appearance, Dock, Mission Control, Finder
+- Keyboard repeat, function keys, shortcuts (desktop switching, input sources, Spotlight)
+- Trackpad gestures, accessibility (drag lock)
+- Screenshots location, window management
+- Imports BetterTouchTool preset and AltTab preferences
 
 ## SSH Terminfo
 

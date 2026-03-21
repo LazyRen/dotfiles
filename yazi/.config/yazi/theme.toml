@@ -1,0 +1,7 @@
+[flavor]
+dark = "onedark"
+
+# Override status bar segment colors
+[mode]
+normal_main = { fg = "#3e4451", bg = "#61afef", bold = true }
+normal_alt = { fg = "#61afef", bg = "#3e4451" }

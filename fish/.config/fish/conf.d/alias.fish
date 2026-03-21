@@ -4,7 +4,7 @@ abbr -a lt "eza --tree --level=2 --icons"
 
 abbr -a cat "bat"
 
-abbr -a za "zellij attach"
+abbr -a za "zellij attach -c"
 
 # git
 abbr -a ga "git add"

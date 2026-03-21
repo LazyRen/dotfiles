@@ -1,0 +1,27 @@
+[manager]
+show_hidden = true
+sort_dir_first = true
+linemode = "size_and_mtime"
+show_symlink = true
+
+[opener]
+edit = [
+  { run = '${EDITOR:-vim} "$@"', block = true },
+]
+
+[open]
+prepend_rules = [
+  { name = "*.md", use = "edit" },
+]
+
+[plugin]
+prepend_previewers = [
+  { name = "*.md", run = "piper", args = ['-- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"'] },
+  { mime = "{image,audio,video}/*", run = "mediainfo" },
+  { name = "*.{docx,xlsx,pptx,odt,ods,odp}", run = "office" },
+]
+
+prepend_fetchers = [
+  { id = "git", name = "*", run = "git" },
+  { id = "git", name = "*/", run = "git" },
+]

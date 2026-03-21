@@ -26,3 +26,6 @@ fish -c "
   end
   fisher update
 "
+
+# Generate completions from man pages
+fish -c "fish_update_completions"
