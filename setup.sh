@@ -60,9 +60,9 @@ backup_and_stow() {
   local conflicts
   conflicts=$(stow --no --target="$HOME" --dir="$DOTFILES_DIR" "$@" 2>&1) || true
 
-  if echo "$conflicts" | grep -q "existing target is"; then
+  if echo "$conflicts" | grep -q "existing target"; then
     mkdir -p "$backup_dir"
-    echo "$conflicts" | grep "existing target is" | sed 's/.*: //' | while read -r file; do
+    echo "$conflicts" | grep "existing target" | sed 's/.*existing target //' | sed 's/ since.*//' | while read -r file; do
       local target="$HOME/$file"
       if [[ -e "$target" && ! -L "$target" ]]; then
         mkdir -p "$backup_dir/$(dirname "$file")"

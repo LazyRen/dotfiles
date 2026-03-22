@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ya pkg install
+# Install packages, or upgrade if already installed
+ya pkg install 2>/dev/null || ya pkg upgrade

@@ -6,6 +6,7 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
 | Tool | Purpose |
 | --- | --- |
+| [AeroSpace](https://nikitabobko.github.io/AeroSpace/) | Tiling window manager |
 | [Fish](https://fishshell.com/) | Shell |
 | [Ghostty](https://ghostty.org/) | Terminal emulator |
 | [Homebrew](https://brew.sh/) | Package manager |
@@ -17,7 +18,6 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
 | App | Purpose |
 | --- | --- |
-| [AltTab](https://alt-tab-macos.netlify.app/) | Windows-style alt-tab |
 | [BetterTouchTool](https://folivora.ai/) | Keyboard/trackpad customization |
 | [Karabiner-Elements](https://karabiner-elements.pqrs.org/) | Key remapping |
 
@@ -85,6 +85,9 @@ brew/list.yaml       # Homebrew formulas, casks, and link targets
 setup.sh             # Main installer
 
 # Stow packages (symlinked to $HOME)
+aerospace/           # AeroSpace tiling window manager config
+atuin/               # Atuin shell history config
+bat/                 # Bat syntax highlighter config
 fish/                # Fish shell config, functions, fisher plugins
 ghostty/             # Ghostty terminal config
 karabiner/           # Karabiner-Elements key remapping
@@ -96,7 +99,6 @@ zellij/              # Zellij multiplexer config, layouts, plugins
 os/mac/              # macOS defaults, xcode-select, app imports
 
 # App config imports (not stowed, referenced by os/mac/setup.sh)
-alttab/              # AltTab preferences plist
 bettertouchtool/     # BetterTouchTool preset
 ```
 
@@ -119,7 +121,7 @@ If the app needs post-stow setup, add an executable `setup.sh` in the app direct
 - Keyboard repeat, function keys, shortcuts (desktop switching, input sources, Spotlight)
 - Trackpad gestures, accessibility (drag lock)
 - Screenshots location, window management
-- Imports BetterTouchTool preset and AltTab preferences
+- Imports BetterTouchTool preset
 
 ## SSH Terminfo
 

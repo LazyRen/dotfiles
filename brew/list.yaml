@@ -14,6 +14,7 @@ formula:
   - htop
   - imagemagick-full
   - jq
+  - magicmark/tap/spacelist
   - mediainfo
   - mise
   - poppler
@@ -32,7 +33,6 @@ formula:
 
 cask:
   - alfred
-  - alt-tab
   - bartender
   - bettertouchtool
   - font-jetbrains-mono-nerd-font

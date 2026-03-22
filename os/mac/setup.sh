@@ -23,6 +23,8 @@ defaults write com.apple.dock show-recents -bool false
 # --- Mission Control ---
 # Don't automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
+# Group windows by application in Mission Control
+defaults write com.apple.dock expose-group-apps -bool true
 
 # --- Language & Region ---
 # Set English as primary language with Korean region
@@ -52,16 +54,6 @@ defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
 defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
 defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write -g NSAutomaticTextCompletionEnabled -bool false
-
-# --- Keyboard > Shortcuts > Mission Control ---
-# Enable Switch to Desktop 1-6 (Ctrl+1 through Ctrl+6)
-# ID:keycode — 118:18, 119:19, 120:20, 121:21, 122:23, 123:22
-for pair in 118:18 119:19 120:20 121:21 122:23 123:22; do
-  id="${pair%%:*}"
-  keycode="${pair##*:}"
-  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add "$id" \
-    "<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>$keycode</integer><integer>262144</integer></array><key>type</key><string>standard</string></dict></dict>"
-done
 
 # --- Keyboard > Shortcuts > Input Sources ---
 # Use karabiner-element to set right_option as F13
@@ -99,6 +91,8 @@ defaults write com.apple.AppleMultitouchTrackpad DragLock -bool true
 defaults write -g NSWindowShouldDragOnGesture -bool true
 # Disable Cmd+Ctrl+D keybind shortcut
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 70 '<dict><key>enabled</key><false/></dict>'
+# Disable windows opening animations
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 
 # --- Finder ---
 # Show hidden files
@@ -124,7 +118,3 @@ if ! pgrep -q "BetterTouchTool"; then
   sleep 2
 fi
 open "btt://import_preset?path=$DOTFILES_DIR/bettertouchtool/Default.bttpreset"
-
-# --- AltTab ---
-# Import preferences
-defaults import com.lwouis.alt-tab-macos "$DOTFILES_DIR/alttab/com.lwouis.alt-tab-macos.plist"
