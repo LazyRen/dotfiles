@@ -1,0 +1,14 @@
+search_mode = "daemon-fuzzy"
+enter_accept = false
+style = "compact"
+inline_height = 20
+
+[daemon]
+enabled = true
+autostart = true
+
+[sync]
+records = true
+
+[ui]
+columns = ["command"]
