@@ -150,7 +150,7 @@ keybinds clear-defaults=true {
         bind "tab" { ToggleTab; }
     }
 
-    // Mode: resize (Alt r)
+    // Mode: resize (Alt z)
     resize {
         bind "left" { Resize "Increase left"; }
         bind "down" { Resize "Increase down"; }
@@ -167,7 +167,7 @@ keybinds clear-defaults=true {
         bind "j" { Resize "Increase down"; }
         bind "k" { Resize "Increase up"; }
         bind "l" { Resize "Increase right"; }
-        bind "Alt r" { SwitchToMode "normal"; }
+        bind "Alt z" { SwitchToMode "normal"; }
     }
 
     // Mode: move (Alt m)
@@ -252,6 +252,7 @@ keybinds clear-defaults=true {
         bind "esc" { UndoRenamePane; SwitchToMode "pane"; }
     }
     // TODO: Wait for renamesession
+    //       https://github.com/zellij-org/zellij/issues/3626
 
     // Shared bindings
     shared_except "locked" {
@@ -259,18 +260,20 @@ keybinds clear-defaults=true {
         bind "Alt down" { MoveFocus "down"; }
         bind "Alt up" { MoveFocus "up"; }
         bind "Alt right" { MoveFocusOrTab "right"; }
-        bind "Alt +" { Resize "Increase"; }
-        bind "Alt -" { Resize "Decrease"; }
-        bind "Alt =" { Resize "Increase"; }
+        // TODO: Conflicts with AeroSpace — uncomment when per-app keybinds land
+        //       https://github.com/nikitabobko/AeroSpace/issues/412
+        // bind "Alt +" { Resize "Increase"; }
+        // bind "Alt -" { Resize "Decrease"; }
+        // bind "Alt =" { Resize "Increase"; }
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt f" { ToggleFloatingPanes; }
         bind "Alt g" { SwitchToMode "locked"; }
-        bind "Alt h" { MoveFocusOrTab "left"; }
+        // bind "Alt h" { MoveFocusOrTab "left"; }
         bind "Alt i" { MoveTab "left"; }
-        bind "Alt j" { MoveFocus "down"; }
-        bind "Alt k" { MoveFocus "up"; }
-        bind "Alt l" { MoveFocusOrTab "right"; }
+        // bind "Alt j" { MoveFocus "down"; }
+        // bind "Alt k" { MoveFocus "up"; }
+        // bind "Alt l" { MoveFocusOrTab "right"; }
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
         bind "Alt q" { Quit; }
@@ -301,7 +304,7 @@ keybinds clear-defaults=true {
         bind "Alt p" { SwitchToMode "pane"; }
     }
     shared_except "locked" "resize" {
-        bind "Alt r" { SwitchToMode "resize"; }
+        bind "Alt z" { SwitchToMode "resize"; }
     }
     shared_except "normal" "locked" "entersearch" {
         bind "enter" { SwitchToMode "normal"; }

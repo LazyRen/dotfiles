@@ -21,6 +21,8 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/).
 | [BetterTouchTool](https://folivora.ai/) | Keyboard/trackpad customization |
 | [Karabiner-Elements](https://karabiner-elements.pqrs.org/) | Key remapping |
 
+See [keybindings.md](keybindings.md) for a full keybinding reference across all apps.
+
 ## Color Palette
 
 Defined in `themes/` as YAML files. Set active theme in `config.yaml`:
