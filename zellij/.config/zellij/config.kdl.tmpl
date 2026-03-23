@@ -24,12 +24,8 @@ plugins {
     compact-bar location="zellij:compact-bar" {
         tooltip "F1"
     }
-    filepicker location="zellij:strider" {
-        cwd "/"
-    }
     plugin-manager location="zellij:plugin-manager"
     session-manager location="zellij:session-manager"
-    strider location="zellij:strider"
 }
 
 load_plugins {
@@ -48,6 +44,56 @@ keybinds clear-defaults=true {
     // Mode: locked
     locked {
         bind "Alt g" { SwitchToMode "normal"; }
+    }
+
+    // Mode: tmux (Ctrl a)
+    tmux {
+        bind "Ctrl a" { Write 2; SwitchToMode "normal"; }
+        bind "left" { MoveFocus "left"; SwitchToMode "normal"; }
+        bind "down" { MoveFocus "down"; SwitchToMode "normal"; }
+        bind "up" { MoveFocus "up"; SwitchToMode "normal"; }
+        bind "right" { MoveFocus "right"; SwitchToMode "normal"; }
+        bind "h" { MoveFocus "left"; SwitchToMode "normal"; }
+        bind "j" { MoveFocus "down"; SwitchToMode "normal"; }
+        bind "k" { MoveFocus "up"; SwitchToMode "normal"; }
+        bind "l" { MoveFocus "right"; SwitchToMode "normal"; }
+
+        bind "space" { NextSwapLayout; SwitchToMode "normal"; }
+        bind "\"" { NewPane "down"; SwitchToMode "normal"; }
+        bind "'" { NewPane "down"; SwitchToMode "normal"; }
+        bind "-" { NewPane "down"; SwitchToMode "normal"; }
+        bind "%" { NewPane "right"; SwitchToMode "normal"; }
+        bind ";" { NewPane "right"; SwitchToMode "normal"; }
+        bind "\\" { NewPane "right"; SwitchToMode "normal"; }
+
+        bind "o" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "normal"
+        }
+
+        bind "[" { MovePaneBackwards; SwitchToMode "normal"; }
+        bind "]" { MovePane; SwitchToMode "normal"; }
+
+        bind "t" { SwitchToMode "renametab"; TabNameInput 0; }
+        bind "c" { NewTab; SwitchToMode "normal"; }
+
+        bind "n" { GoToNextTab; SwitchToMode "normal"; }
+        bind "p" { GoToPreviousTab; SwitchToMode "normal"; }
+        bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
+        bind "r" { SwitchToMode "resize"; }
+
+        bind "1" { GoToTab 1; SwitchToMode "normal"; }
+        bind "2" { GoToTab 2; SwitchToMode "normal"; }
+        bind "3" { GoToTab 3; SwitchToMode "normal"; }
+        bind "4" { GoToTab 4; SwitchToMode "normal"; }
+        bind "5" { GoToTab 5; SwitchToMode "normal"; }
+        bind "6" { GoToTab 6; SwitchToMode "normal"; }
+        bind "7" { GoToTab 7; SwitchToMode "normal"; }
+        bind "8" { GoToTab 8; SwitchToMode "normal"; }
+        bind "9" { GoToTab 9; SwitchToMode "normal"; }
     }
 
     // Mode: pane (Alt p)
@@ -196,56 +242,6 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "normal"
         }
-    }
-
-    // Mode: tmux (Ctrl a)
-    tmux {
-        bind "Ctrl a" { Write 2; SwitchToMode "normal"; }
-        bind "left" { MoveFocus "left"; SwitchToMode "normal"; }
-        bind "down" { MoveFocus "down"; SwitchToMode "normal"; }
-        bind "up" { MoveFocus "up"; SwitchToMode "normal"; }
-        bind "right" { MoveFocus "right"; SwitchToMode "normal"; }
-        bind "h" { MoveFocus "left"; SwitchToMode "normal"; }
-        bind "j" { MoveFocus "down"; SwitchToMode "normal"; }
-        bind "k" { MoveFocus "up"; SwitchToMode "normal"; }
-        bind "l" { MoveFocus "right"; SwitchToMode "normal"; }
-
-        bind "space" { NextSwapLayout; }
-        bind "\"" { NewPane "down"; SwitchToMode "normal"; }
-        bind "'" { NewPane "down"; SwitchToMode "normal"; }
-        bind "-" { NewPane "down"; SwitchToMode "normal"; }
-        bind "%" { NewPane "right"; SwitchToMode "normal"; }
-        bind ";" { NewPane "right"; SwitchToMode "normal"; }
-        bind "\\" { NewPane "right"; SwitchToMode "normal"; }
-
-        bind "o" {
-            LaunchOrFocusPlugin "session-manager" {
-                floating true
-                move_to_focused_tab true
-            }
-            SwitchToMode "normal"
-        }
-
-        bind "[" { MovePaneBackwards; }
-        bind "]" { MovePane; }
-
-        bind "t" { SwitchToMode "renametab"; TabNameInput 0; }
-        bind "c" { NewTab; SwitchToMode "normal"; }
-
-        bind "n" { GoToNextTab; SwitchToMode "normal"; }
-        bind "p" { GoToPreviousTab; SwitchToMode "normal"; }
-        bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
-        bind "r" { SwitchToMode "resize"; }
-
-        bind "1" { GoToTab 1; SwitchToMode "normal"; }
-        bind "2" { GoToTab 2; SwitchToMode "normal"; }
-        bind "3" { GoToTab 3; SwitchToMode "normal"; }
-        bind "4" { GoToTab 4; SwitchToMode "normal"; }
-        bind "5" { GoToTab 5; SwitchToMode "normal"; }
-        bind "6" { GoToTab 6; SwitchToMode "normal"; }
-        bind "7" { GoToTab 7; SwitchToMode "normal"; }
-        bind "8" { GoToTab 8; SwitchToMode "normal"; }
-        bind "9" { GoToTab 9; SwitchToMode "normal"; }
     }
 
     // Rename modes
