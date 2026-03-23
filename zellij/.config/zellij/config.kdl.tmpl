@@ -21,6 +21,9 @@ ui {
 plugins {
     about location="zellij:about"
     configuration location="zellij:configuration"
+    compact-bar location="zellij:compact-bar" {
+        tooltip "F1"
+    }
     filepicker location="zellij:strider" {
         cwd "/"
     }
@@ -30,6 +33,7 @@ plugins {
 }
 
 load_plugins {
+    compact-bar
     "$HOME/.config/zellij/plugins/zjframes.wasm" {
         hide_frame_except_for_fullscreen true
         hide_frame_except_for_scroll true
@@ -194,27 +198,54 @@ keybinds clear-defaults=true {
         }
     }
 
-    // Mode: tmux (Ctrl b)
+    // Mode: tmux (Ctrl a)
     tmux {
+        bind "Ctrl a" { Write 2; SwitchToMode "normal"; }
         bind "left" { MoveFocus "left"; SwitchToMode "normal"; }
         bind "down" { MoveFocus "down"; SwitchToMode "normal"; }
         bind "up" { MoveFocus "up"; SwitchToMode "normal"; }
         bind "right" { MoveFocus "right"; SwitchToMode "normal"; }
-        bind "space" { NextSwapLayout; }
-        bind "\"" { NewPane "down"; SwitchToMode "normal"; }
-        bind "%" { NewPane "right"; SwitchToMode "normal"; }
-        bind "," { SwitchToMode "renametab"; }
-        bind "[" { SwitchToMode "scroll"; }
-        bind "Ctrl b" { Write 2; SwitchToMode "normal"; }
-        bind "c" { NewTab; SwitchToMode "normal"; }
         bind "h" { MoveFocus "left"; SwitchToMode "normal"; }
         bind "j" { MoveFocus "down"; SwitchToMode "normal"; }
         bind "k" { MoveFocus "up"; SwitchToMode "normal"; }
         bind "l" { MoveFocus "right"; SwitchToMode "normal"; }
+
+        bind "space" { NextSwapLayout; }
+        bind "\"" { NewPane "down"; SwitchToMode "normal"; }
+        bind "'" { NewPane "down"; SwitchToMode "normal"; }
+        bind "-" { NewPane "down"; SwitchToMode "normal"; }
+        bind "%" { NewPane "right"; SwitchToMode "normal"; }
+        bind ";" { NewPane "right"; SwitchToMode "normal"; }
+        bind "\\" { NewPane "right"; SwitchToMode "normal"; }
+
+        bind "o" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "normal"
+        }
+
+        bind "[" { MovePaneBackwards; }
+        bind "]" { MovePane; }
+
+        bind "t" { SwitchToMode "renametab"; TabNameInput 0; }
+        bind "c" { NewTab; SwitchToMode "normal"; }
+
         bind "n" { GoToNextTab; SwitchToMode "normal"; }
-        bind "o" { FocusNextPane; }
         bind "p" { GoToPreviousTab; SwitchToMode "normal"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
+        bind "r" { SwitchToMode "resize"; }
+
+        bind "1" { GoToTab 1; SwitchToMode "normal"; }
+        bind "2" { GoToTab 2; SwitchToMode "normal"; }
+        bind "3" { GoToTab 3; SwitchToMode "normal"; }
+        bind "4" { GoToTab 4; SwitchToMode "normal"; }
+        bind "5" { GoToTab 5; SwitchToMode "normal"; }
+        bind "6" { GoToTab 6; SwitchToMode "normal"; }
+        bind "7" { GoToTab 7; SwitchToMode "normal"; }
+        bind "8" { GoToTab 8; SwitchToMode "normal"; }
+        bind "9" { GoToTab 9; SwitchToMode "normal"; }
     }
 
     // Rename modes
@@ -224,6 +255,7 @@ keybinds clear-defaults=true {
     renamepane {
         bind "esc" { UndoRenamePane; SwitchToMode "pane"; }
     }
+    // TODO: Wait for renamesession
 
     // Shared bindings
     shared_except "locked" {
@@ -261,7 +293,7 @@ keybinds clear-defaults=true {
         bind "Alt w" { SwitchToMode "session"; }
     }
     shared_except "locked" "scroll" "search" "tmux" {
-        bind "Ctrl b" { SwitchToMode "tmux"; }
+        bind "Ctrl a" { SwitchToMode "tmux"; }
     }
     shared_except "locked" "scroll" "search" {
         bind "Alt s" { SwitchToMode "scroll"; }
