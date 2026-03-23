@@ -23,11 +23,25 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
 ## Color Palette
 
-Based on
-Ghostty theme: [**Atom One Dark**](https://iterm2colorschemes.com/)
-and
-VS Code theme: [**One Dark Pro**](https://github.com/Binaryify/OneDark-Pro)
-with [personal modifications](ghostty/.config/ghostty/config.ghostty#L4-L14)
+Defined in `themes/` as YAML files. Set active theme in `config.yaml`:
+
+```yaml
+theme: onedark           # or catppuccin-mocha
+```
+
+Available themes:
+
+- `onedark` — based on [One Dark Pro](https://github.com/Binaryify/OneDark-Pro)
+- `catppuccin-mocha` — based on [Catppuccin Mocha](https://catppuccin.com/palette/)
+
+Template files (`.tmpl`) generate app configs with theme colors.
+Affected apps: Ghostty, Zellij, Yazi, Bat.
+
+Re-apply theme after changes:
+
+```bash
+./setup.sh --theme
+```
 
 ![Terminal Screenshot](terminal.png)
 
@@ -67,9 +81,10 @@ app to skip it.
 
 `setup.sh` will:
 
-1. Install Homebrew packages from `brew/list.yaml`
-2. Symlink configured apps to `$HOME` via stow
-3. Run per-app `setup.sh` hooks (fisher plugins, yazi packages, zellij plugins, etc.)
+1. Render theme templates from `themes/<name>.yaml` into app configs
+2. Install Homebrew packages from `brew/list.yaml`
+3. Symlink configured apps to `$HOME` via stow
+4. Run per-app `setup.sh` hooks (fisher plugins, yazi packages, zellij plugins, etc.)
 
 Re-run after pulling config-only changes:
 
@@ -77,12 +92,19 @@ Re-run after pulling config-only changes:
 ./setup.sh --skip-brew
 ```
 
+Apply theme only (no brew, stow, or hooks):
+
+```bash
+./setup.sh --theme
+```
+
 ## Structure
 
 ```text
-config.yaml          # Apps to install (comment out to disable)
+config.yaml          # Apps to install + active theme
 brew/list.yaml       # Homebrew formulas, casks, and link targets
 setup.sh             # Main installer
+themes/              # Color theme definitions (YAML)
 
 # Stow packages (symlinked to $HOME)
 aerospace/           # AeroSpace tiling window manager config

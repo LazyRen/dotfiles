@@ -27,5 +27,8 @@ fish -c "
   fisher update
 "
 
-# Generate completions from man pages
-fish -c "fish_update_completions"
+# Generate completions from man pages (slow, only needed once)
+COMP_DIR="$HOME/.local/share/fish/generated_completions"
+if [ ! -d "$COMP_DIR" ] || [ -z "$(ls -A "$COMP_DIR" 2>/dev/null)" ]; then
+  fish -c "fish_update_completions"
+fi

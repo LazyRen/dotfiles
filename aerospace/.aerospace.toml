@@ -35,8 +35,6 @@ alt-shift-down = 'join-with down'
 alt-shift-up = 'join-with up'
 alt-shift-right = 'join-with right'
 
-alt-g = 'exec-and-forget open -a /Applications/Ghostty.app'
-
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 

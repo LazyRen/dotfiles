@@ -5,10 +5,12 @@ DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 IS_MAC=false
 [[ "$(uname)" == "Darwin" ]] && IS_MAC=true
 SKIP_BREW=false
+THEME=false
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --skip-brew) SKIP_BREW=true; shift ;;
+    --skip-brew)  SKIP_BREW=true; shift ;;
+    --theme) THEME=true; shift ;;
     *) echo "Unknown option: $1"; exit 1 ;;
   esac
 done
@@ -21,6 +23,46 @@ parse_yaml_list() {
       "  - "*) echo "${line#  - }" ;;
     esac
   done < "$file"
+}
+
+parse_yaml_scalar() {
+  local file="$1" key="$2"
+  while IFS= read -r line; do
+    case "$line" in
+      "${key}: "*)
+        local val="${line#"${key}": }"
+        val="${val#\"}" ; val="${val%\"}"
+        echo "$val"
+        return ;;
+    esac
+  done < "$file"
+}
+
+parse_theme() {
+  local theme_file="$1"
+  THEME_KEYS=()
+  THEME_VALS=()
+  while IFS= read -r line; do
+    [[ "$line" =~ ^#.*$ || -z "$line" ]] && continue
+    local key="${line%%:*}"
+    local val="${line#*: }"
+    val="${val#\"}" ; val="${val%\"}"
+    THEME_KEYS+=("$key")
+    THEME_VALS+=("$val")
+  done < "$theme_file"
+}
+
+render_templates() {
+  local dir="$1"
+  while IFS= read -r -d '' tmpl; do
+    local out="${tmpl%.tmpl}"
+    local sed_args=()
+    for i in "${!THEME_KEYS[@]}"; do
+      sed_args+=(-e "s/{{${THEME_KEYS[$i]}}}/${THEME_VALS[$i]}/g")
+    done
+    sed "${sed_args[@]}" "$tmpl" > "$out"
+    echo "Rendered ${out#"$DOTFILES_DIR"/}"
+  done < <(find "$dir" -name '*.tmpl' -print0)
 }
 
 ensure_brew() {
@@ -88,6 +130,25 @@ run_hooks() {
 }
 
 # --- Main ---
+
+# Render theme templates
+theme_name=$(parse_yaml_scalar "$DOTFILES_DIR/config.yaml" "theme")
+if [[ -n "$theme_name" ]]; then
+  theme_file="$DOTFILES_DIR/themes/${theme_name}.yaml"
+  if [[ -f "$theme_file" ]]; then
+    echo "Applying theme: $theme_name"
+    parse_theme "$theme_file"
+    render_templates "$DOTFILES_DIR"
+  else
+    echo "WARNING: theme file not found: $theme_file"
+  fi
+fi
+
+if $THEME; then
+  echo "Done (--theme)"
+  exit 0
+fi
+
 apps=()
 while IFS= read -r app; do
   apps+=("$app")

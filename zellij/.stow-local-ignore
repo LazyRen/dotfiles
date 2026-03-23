@@ -19,3 +19,4 @@ _darcs
 # Custom
 \.DS_Store
 setup\.sh
+\.tmpl$

@@ -1,0 +1,34 @@
+# Catppuccin Mocha
+# Official palette — https://catppuccin.com/palette/
+
+# App theme names
+ghostty_theme: "Catppuccin Mocha"
+zellij_theme: "catppuccin-mocha"
+bat_theme: "Catppuccin Mocha"
+yazi_flavor: "catppuccin-mocha"
+
+background: "#1e1e2e"
+background_dark: "#181825"
+foreground: "#cdd6f4"
+selection: "#45475a"
+surface: "#313244"
+comment: "#6c7086"
+orange: "#fab387"
+
+black: "#1e1e2e"
+red: "#f38ba8"
+green: "#a6e3a1"
+yellow: "#f9e2af"
+blue: "#89b4fa"
+magenta: "#cba6f7"
+cyan: "#94e2d5"
+white: "#bac2de"
+
+bright_black: "#585b70"
+bright_red: "#eba0ac"
+bright_green: "#a6e3a1"
+bright_yellow: "#f9e2af"
+bright_blue: "#b4befe"
+bright_magenta: "#f5c2e7"
+bright_cyan: "#89dceb"
+bright_white: "#cdd6f4"

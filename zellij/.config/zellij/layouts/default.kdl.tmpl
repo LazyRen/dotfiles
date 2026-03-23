@@ -1,0 +1,179 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="file:$HOME/.config/zellij/plugins/zjstatus.wasm" {
+                // Color Palette
+                color_bg      "{{background}}"
+                color_bg_alt  "{{background_dark}}"
+                color_surface "{{surface}}"
+                color_comment "{{comment}}"
+                color_red     "{{red}}"
+                color_green   "{{green}}"
+                color_yellow  "{{yellow}}"
+                color_blue    "{{blue}}"
+                color_magenta "{{magenta}}"
+                color_cyan    "{{cyan}}"
+                color_white   "{{white}}"
+                color_orange  "{{orange}}"
+
+                format_left   "{mode} {session}    {tabs}"
+                format_center "{notifications}"
+                format_right  "{command_user} {command_server} {datetime}"
+                format_space  ""
+                format_hide_on_overlength "true"
+                format_precedence "lrc"
+
+                border_enabled  "false"
+                border_char     "─"
+                border_format   "#[fg=$comment]{char}"
+                border_position "top"
+
+                hide_frame_except_for_search "true"
+
+                mode_normal        "#[bg=$bg,fg=$green]#[bg=$green,fg=$bg,bold] "
+                mode_locked        "#[bg=$bg,fg=$red]#[bg=$red,fg=$bg,bold] "
+                mode_resize        "#[bg=$bg,fg=$red]#[bg=$red,fg=$bg,bold]󰩨 "
+                mode_pane          "#[bg=$bg,fg=$blue]#[bg=$blue,fg=$bg,bold] "
+                mode_tab           "#[bg=$bg,fg=$magenta]#[bg=$magenta,fg=$bg,bold]󰓩 "
+                mode_scroll        "#[bg=$bg,fg=$yellow]#[bg=$yellow,fg=$bg,bold] "
+                mode_enter_search  "#[bg=$bg,fg=$blue]#[bg=$blue,fg=$bg,bold] "
+                mode_search        "#[bg=$bg,fg=$blue]#[bg=$blue,fg=$bg,bold] "
+                mode_rename_tab    "#[bg=$bg,fg=$magenta]#[bg=$magenta,fg=$bg,bold]󰏫 "
+                mode_rename_pane   "#[bg=$bg,fg=$blue]#[bg=$blue,fg=$bg,bold]󰏫 "
+                mode_session       "#[bg=$bg,fg=$cyan]#[bg=$cyan,fg=$bg,bold] "
+                mode_move          "#[bg=$bg,fg=$magenta]#[bg=$magenta,fg=$bg,bold]󰆾 "
+                mode_prompt        "#[bg=$bg,fg=$blue]#[bg=$blue,fg=$bg,bold] "
+                mode_tmux          "#[bg=$bg,fg=$orange]#[bg=$orange,fg=$bg,bold] "
+
+                tab_normal              "#[bg=$bg,fg=$comment]{index}: {name}{floating_indicator}"
+                tab_normal_fullscreen   "#[bg=$bg,fg=$comment]{index}: {name}{fullscreen_indicator}"
+                tab_normal_sync         "#[bg=$bg,fg=$comment]{index}: {name}{sync_indicator}"
+
+                tab_active              "#[bg=$bg,fg=$blue]{index}: {name}{floating_indicator}"
+                tab_active_fullscreen   "#[bg=$bg,fg=$blue]{index}: {name}{fullscreen_indicator}"
+                tab_active_sync         "#[bg=$bg,fg=$blue]{index}: {name}{sync_indicator}"
+
+                tab_separator           "#[bg=$bg] "
+
+                tab_sync_indicator       ""
+                tab_fullscreen_indicator " 󰊓"
+                tab_floating_indicator   ""
+
+                // command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
+                // command_git_branch_format      "#[bg=$bg,fg=$blue]{stdout}"
+                // command_git_branch_interval    "10"
+                // command_git_branch_rendermode  "static"
+
+                command_user_command    "whoami"
+                command_user_format     "#[bg=$bg,fg=$cyan]#[bg=$cyan,fg=$bg] #[bg=$bg,fg=$white] {stdout}"
+                command_user_interval   "0"
+                command_user_rendermode "static"
+
+                command_server_command    "hostname -s"
+                command_server_format     "#[bg=$bg,fg=$magenta]#[bg=$magenta,fg=$bg] #[bg=$bg,fg=$white] {stdout}"
+                command_server_interval   "0"
+                command_server_rendermode "static"
+
+                datetime        "#[bg=$bg,fg=$orange]#[bg=$orange,fg=$bg] #[bg=$bg,fg=$white] {format}"
+                datetime_format "%m-%d %H:%M"
+                datetime_timezone "Asia/Seoul"
+
+                notification_format_unread           "#[fg=$red,bg=$bg,blink] #[fg=$red,bg=$bg] {message} "
+                notification_format_no_notifications ""
+                notification_show_interval           "10"
+            }
+        }
+    }
+
+    swap_tiled_layout name="vertical" {
+        tab max_panes=5 {
+            pane split_direction="vertical" {
+                pane
+                pane { children; }
+            }
+        }
+        tab max_panes=8 {
+            pane split_direction="vertical" {
+                pane { children; }
+                pane { pane; pane; pane; pane; }
+            }
+        }
+        tab max_panes=12 {
+            pane split_direction="vertical" {
+                pane { children; }
+                pane { pane; pane; pane; pane; }
+                pane { pane; pane; pane; pane; }
+            }
+        }
+    }
+
+    swap_tiled_layout name="horizontal" {
+        tab max_panes=4 {
+            pane
+            pane
+        }
+        tab max_panes=8 {
+            pane {
+                pane split_direction="vertical" { children; }
+                pane split_direction="vertical" { pane; pane; pane; pane; }
+            }
+        }
+        tab max_panes=12 {
+            pane {
+                pane split_direction="vertical" { children; }
+                pane split_direction="vertical" { pane; pane; pane; pane; }
+                pane split_direction="vertical" { pane; pane; pane; pane; }
+            }
+        }
+    }
+
+    swap_tiled_layout name="stacked" {
+        tab min_panes=5 {
+            pane split_direction="vertical" {
+                pane
+                pane stacked=true { children; }
+            }
+        }
+    }
+
+    swap_floating_layout name="staggered" {
+        floating_panes
+    }
+
+    swap_floating_layout name="enlarged" {
+        floating_panes max_panes=10 {
+            pane { x "5%"; y 1; width "90%"; height "90%"; }
+            pane { x "5%"; y 2; width "90%"; height "90%"; }
+            pane { x "5%"; y 3; width "90%"; height "90%"; }
+            pane { x "5%"; y 4; width "90%"; height "90%"; }
+            pane { x "5%"; y 5; width "90%"; height "90%"; }
+            pane { x "5%"; y 6; width "90%"; height "90%"; }
+            pane { x "5%"; y 7; width "90%"; height "90%"; }
+            pane { x "5%"; y 8; width "90%"; height "90%"; }
+            pane { x "5%"; y 9; width "90%"; height "90%"; }
+            pane { x 10; y 10; width "90%"; height "90%"; }
+        }
+    }
+
+    swap_floating_layout name="spread" {
+        floating_panes max_panes=1 {
+            pane {y "50%"; x "50%"; }
+        }
+        floating_panes max_panes=2 {
+            pane { x "1%"; y "25%"; width "45%"; }
+            pane { x "50%"; y "25%"; width "45%"; }
+        }
+        floating_panes max_panes=3 {
+            pane { y "55%"; width "45%"; height "45%"; }
+            pane { x "1%"; y "1%"; width "45%"; }
+            pane { x "50%"; y "1%"; width "45%"; }
+        }
+        floating_panes max_panes=4 {
+            pane { x "1%"; y "55%"; width "45%"; height "45%"; }
+            pane { x "50%"; y "55%"; width "45%"; height "45%"; }
+            pane { x "1%"; y "1%"; width "45%"; height "45%"; }
+            pane { x "50%"; y "1%"; width "45%"; height "45%"; }
+        }
+    }
+}
