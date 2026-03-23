@@ -14,7 +14,6 @@ formula:
   - htop
   - imagemagick-full
   - jq
-  - magicmark/tap/spacelist
   - mediainfo
   - mise
   - poppler
@@ -30,6 +29,9 @@ formula:
   - zellij
   - zoxide
   - zsh
+
+formula_mac:
+  - magicmark/tap/spacelist
 
 cask:
   - alfred

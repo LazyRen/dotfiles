@@ -40,15 +40,17 @@ install_brew_packages() {
   local section=""
   while IFS= read -r line; do
     case "$line" in
-      "formula:") section="formula" ;;
-      "cask:")    section="cask" ;;
-      "link:")    section="link" ;;
+      "formula:")     section="formula" ;;
+      "formula_mac:") section="formula_mac" ;;
+      "cask:")        section="cask" ;;
+      "link:")        section="link" ;;
       "  - "*)
         local pkg="${line#  - }"
         case "$section" in
-          formula) brew install "$pkg" ;;
-          cask)    $IS_MAC && brew install --cask "$pkg" ;;
-          link)    brew link "$pkg" --force --overwrite ;;
+          formula)     brew install "$pkg" ;;
+          formula_mac) $IS_MAC && brew install "$pkg" ;;
+          cask)        $IS_MAC && brew install --cask "$pkg" ;;
+          link)        brew link "$pkg" --force --overwrite ;;
         esac
         ;;
     esac
