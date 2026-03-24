@@ -56,9 +56,15 @@ layout {
 
                 tab_separator           "#[bg=$bg] "
 
-                tab_sync_indicator       ""
-                tab_fullscreen_indicator " 󰊓"
+                tab_rename              "#[fg=$yellow,bg=$bg]{index}: {name}{floating_indicator}"
+
+                tab_sync_indicator       " "
+                tab_fullscreen_indicator " "
                 tab_floating_indicator   ""
+
+                tab_display_count         "3"  // limit to showing 3 tabs
+                tab_truncate_start_format "#[fg=$yellow,bg=$bg]< +{count} ... "
+                tab_truncate_end_format   "#[fg=$yellow,bg=$bg] ... +{count} >"
 
                 // command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
                 // command_git_branch_format      "#[bg=$bg,fg=$blue]{stdout}"
