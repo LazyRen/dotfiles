@@ -61,6 +61,14 @@ keybinds clear-defaults=true {
         bind "k" { MoveFocus "up"; SwitchToMode "normal"; }
         bind "l" { MoveFocus "right"; SwitchToMode "normal"; }
 
+        bind "s" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij-loom.wasm" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "normal"
+        }
+
         bind "space" { NextSwapLayout; SwitchToMode "normal"; }
         bind "\"" { NewPane "down"; SwitchToMode "normal"; }
         bind "'" { NewPane "down"; SwitchToMode "normal"; }
@@ -80,11 +88,17 @@ keybinds clear-defaults=true {
         bind "[" { MovePaneBackwards; SwitchToMode "normal"; }
         bind "]" { MovePane; SwitchToMode "normal"; }
 
-        bind "t" { SwitchToMode "renametab"; TabNameInput 0; }
+        bind "t" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
+                floating true
+                ignore_case true
+                quick_jump true
+            }
+        }
         bind "c" { NewTab; SwitchToMode "normal"; }
 
         bind "Tab" { GoToNextTab; SwitchToMode "normal"; }
-        bind "n" { GoToNextTab; SwitchToMode "normal"; }
+        bind "n" { SwitchToMode "renametab"; TabNameInput 0; }
         bind "p" { GoToPreviousTab; SwitchToMode "normal"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
         bind "r" { SwitchToMode "resize"; }
