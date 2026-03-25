@@ -5,6 +5,7 @@ abbr -a lt "eza --tree --level=2 --icons"
 abbr -a cat "bat"
 
 abbr -a za "zellij attach -c"
+abbr -a zat 'zellij attach $(zellij ls -s | fzf)'
 
 abbr -a ff "spacelist"
 
@@ -31,6 +32,7 @@ abbr -a grb "git rebase"
 abbr -a grbc "git rebase --continue"
 abbr -a grba "git rebase --abort"
 abbr -a gresetlastcommit "git reset --hard HEAD~1"
+abbr -a gresetremote 'git reset --hard origin/(git branch --show-current)'
 abbr -a grs "git restore"
 abbr -a grss "git restore --staged"
 abbr -a gs "git status"

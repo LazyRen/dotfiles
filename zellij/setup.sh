@@ -8,13 +8,13 @@ plugins=(
   "rvcas/room/room.wasm"
   "dj95/zjstatus/zjstatus.wasm"
   "dj95/zjstatus/zjframes.wasm"
+  "liam-mackie/zsm/zsm.wasm"
+  "drop-stones/zellij-loom/zellij-loom.wasm"
 )
 
 for plugin in "${plugins[@]}"; do
   repo="${plugin%/*}"
   file="${plugin##*/}"
-  if [[ ! -f "$PLUGIN_DIR/$file" ]]; then
-    echo "Installing zellij plugin: $file"
-    curl -L "https://github.com/$repo/releases/latest/download/$file" -o "$PLUGIN_DIR/$file"
-  fi
+  echo "Installing zellij plugin: $file"
+  curl -sL "https://github.com/$repo/releases/latest/download/$file" -o "$PLUGIN_DIR/$file"
 done

@@ -26,6 +26,9 @@ plugins {
     }
     plugin-manager location="zellij:plugin-manager"
     session-manager location="zellij:session-manager"
+    zellij-loom location="file:~/.config/zellij/plugins/zellij-loom.wasm" {
+        keybind_mode "vim"
+    }
 }
 
 load_plugins {
@@ -223,6 +226,13 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
         bind "Alt w" { SwitchToMode "normal"; }
+        bind "l" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij-loom.wasm" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "normal"
+        }
         bind "p" {
             LaunchOrFocusPlugin "plugin-manager" {
                 floating true
