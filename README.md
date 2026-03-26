@@ -14,6 +14,16 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/).
 | [Yazi](https://yazi-rs.github.io/) | File manager |
 | [Zellij](https://zellij.dev/) | Terminal multiplexer |
 
+### Fisher Plugins
+
+| Plugin | Purpose |
+| --- | --- |
+| [autopair](https://github.com/jorgebucaran/autopair.fish) | Auto-close brackets, quotes, etc. |
+| [bass](https://github.com/edc/bass) | Run bash utilities in fish |
+| [done](https://github.com/franciscolourenco/done) | Notify when long-running commands finish |
+| [forgit](https://github.com/wfxr/forgit) | Interactive git commands via fzf |
+| [sponge](https://github.com/meaningful-ooo/sponge) | Clean failed commands from history |
+
 ### macOS Apps
 
 | App | Purpose |
@@ -39,10 +49,10 @@ Available themes:
 Template files (`.tmpl`) generate app configs with theme colors.
 Affected apps: Ghostty, Zellij, Yazi, Bat.
 
-Re-apply theme after changes:
+Re-apply configs after changes:
 
 ```bash
-./setup.sh --theme
+./setup.sh --update-configs
 ```
 
 ![Terminal Screenshot](terminal.png)
@@ -97,7 +107,7 @@ Re-run after pulling config-only changes:
 Apply theme only (no brew, stow, or hooks):
 
 ```bash
-./setup.sh --theme
+./setup.sh --update-configs
 ```
 
 ## Structure

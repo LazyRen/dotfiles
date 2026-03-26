@@ -10,7 +10,7 @@ THEME=false
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --skip-brew)  SKIP_BREW=true; shift ;;
-    --theme) THEME=true; shift ;;
+    --update-configs) THEME=true; shift ;;
     *) echo "Unknown option: $1"; exit 1 ;;
   esac
 done
@@ -145,7 +145,7 @@ if [[ -n "$theme_name" ]]; then
 fi
 
 if $THEME; then
-  echo "Done (--theme)"
+  echo "Done (--update-configs)"
   exit 0
 fi
 
