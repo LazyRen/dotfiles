@@ -61,7 +61,7 @@ keybinds clear-defaults=true {
         bind "k" { MoveFocus "up"; SwitchToMode "normal"; }
         bind "l" { MoveFocus "right"; SwitchToMode "normal"; }
 
-        bind "s" {
+        bind "w" {
             LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij-loom.wasm" {
                 floating true
                 move_to_focused_tab true
@@ -93,13 +93,18 @@ keybinds clear-defaults=true {
                 floating true
                 ignore_case true
                 quick_jump true
+                move_to_focused_tab true
             }
+            SwitchToMode "normal"
         }
         bind "c" { NewTab; SwitchToMode "normal"; }
+        bind "," { SwitchToMode "renametab"; TabNameInput 0; }
 
-        bind "Tab" { GoToNextTab; SwitchToMode "normal"; }
-        bind "n" { SwitchToMode "renametab"; TabNameInput 0; }
+        bind "n" { GoToNextTab; SwitchToMode "normal"; }
         bind "p" { GoToPreviousTab; SwitchToMode "normal"; }
+        bind "Tab" { GoToNextTab; SwitchToMode "normal"; }
+        bind "Shift Tab" { GoToPreviousTab; SwitchToMode "normal"; }
+
         bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
         bind "r" { SwitchToMode "resize"; }
 
@@ -286,20 +291,22 @@ keybinds clear-defaults=true {
         bind "Alt down" { MoveFocus "down"; }
         bind "Alt up" { MoveFocus "up"; }
         bind "Alt right" { MoveFocusOrTab "right"; }
+
         // TODO: Conflicts with AeroSpace — uncomment when per-app keybinds land
         //       https://github.com/nikitabobko/AeroSpace/issues/412
+        // bind "Alt h" { MoveFocusOrTab "left"; }
+        // bind "Alt j" { MoveFocus "down"; }
+        // bind "Alt k" { MoveFocus "up"; }
+        // bind "Alt l" { MoveFocusOrTab "right"; }
         // bind "Alt +" { Resize "Increase"; }
         // bind "Alt -" { Resize "Decrease"; }
         // bind "Alt =" { Resize "Increase"; }
+
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt f" { ToggleFloatingPanes; }
         bind "Alt g" { SwitchToMode "locked"; }
-        // bind "Alt h" { MoveFocusOrTab "left"; }
         bind "Alt i" { MoveTab "left"; }
-        // bind "Alt j" { MoveFocus "down"; }
-        // bind "Alt k" { MoveFocus "up"; }
-        // bind "Alt l" { MoveFocusOrTab "right"; }
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
         bind "Alt q" { Quit; }
