@@ -1,0 +1,38 @@
+[core]
+    pager = delta
+
+[init]
+    defaultBranch = main
+
+[push]
+    autoSetupRemote = true
+
+[pull]
+    rebase = true
+
+[fetch]
+    prune = true
+
+[rebase]
+    autoStash = true
+
+[rerere]
+    enabled = true
+
+[branch]
+    sort = -committerdate
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    side-by-side = true
+    line-numbers = true
+    syntax-theme = OneHalfDark
+
+[merge]
+    conflictstyle = zdiff3
+
+[diff]
+    colorMoved = default

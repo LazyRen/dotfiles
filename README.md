@@ -124,6 +124,7 @@ atuin/               # Atuin shell history config
 bat/                 # Bat syntax highlighter config
 fish/                # Fish shell config, functions, fisher plugins
 ghostty/             # Ghostty terminal config
+git/                 # Git config (delta pager, diff settings)
 karabiner/           # Karabiner-Elements key remapping
 starship/            # Starship prompt config
 yazi/                # Yazi file manager config and plugins
