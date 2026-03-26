@@ -8,6 +8,8 @@ karabiner/.config/karabiner/automatic_backups/
 # Generated from .tmpl templates (run setup.sh to regenerate)
 bat/.config/bat/config
 ghostty/.config/ghostty/config.ghostty
+yazi/.config/yazi/flavors/
+yazi/.config/yazi/plugins/
 yazi/.config/yazi/theme.toml
 zellij/.config/zellij/config.kdl
 zellij/.config/zellij/layouts/default.kdl
