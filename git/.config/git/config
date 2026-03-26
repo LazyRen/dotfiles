@@ -1,5 +1,6 @@
 [core]
-    pager = delta
+    # https://github.com/wfxr/forgit/issues/121
+    pager = delta --side-by-side --width ${FZF_PREVIEW_COLUMNS-$COLUMNS}
 
 [init]
     defaultBranch = main

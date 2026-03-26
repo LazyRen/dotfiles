@@ -15,7 +15,7 @@ abbr -a gca "git commit --amend"
 abbr -a gcm --set-cursor 'git commit -m "%"'
 abbr -a gcpc "git cherry-pick --continue"
 abbr -a gcpa "git cherry-pick --abort"
-abbr -a gds "git diff --staged"
+abbr -a gds "git-forgit diff --staged"
 abbr -a gl "git log --color --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cd)%C(bold blue) <%an>%Creset' --abbrev-commit --date=short"
 abbr -a gm "git merge"
 abbr -a gp "git push"
