@@ -70,12 +70,15 @@ Prefix: **Ctrl+B**
 | " / ' / - | Split down |
 | % / ; / \\ | Split right |
 | C | New tab |
+| , | Rename tab |
 | N/P | Next/previous tab |
+| Tab / Shift+Tab | Next/previous tab |
 | 1-9 | Go to tab N |
-| T | Rename tab |
 | Z | Toggle fullscreen |
 | R | Enter resize mode |
+| W | Session list (Loom) |
 | O | Session manager |
+| T | Room finder |
 | [ / ] | Move pane backward/forward |
 | X | Close pane |
 | D | Detach |
@@ -158,6 +161,7 @@ Prefix: **Ctrl+B**
 | Key | Action |
 | --- | --- |
 | W | Session manager |
+| L | Session list (Loom) |
 | C | Configuration |
 | P | Plugin manager |
 | A | About |
