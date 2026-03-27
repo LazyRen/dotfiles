@@ -1,5 +1,12 @@
-function code --description "Open VS Code (works outside VS Code terminal)"
-    # Find the most recent VSCode server folder (excluding .staging)
+function code --description "Open VS Code (works outside VS Code terminal via SSH)"
+    # If a real `code` binary exists (i.e. running locally), use it directly
+    set -l real_code (command -s code)
+    if test -n "$real_code"
+        command code $argv
+        return $status
+    end
+
+    # SSH remote: find the most recent VSCode server folder (excluding .staging)
     set -l script (ls -td ~/.vscode-server/cli/servers/*/server/bin/remote-cli/code 2>/dev/null | string match -rv '\.staging' | head -n1)
 
     if not test -x "$script"
