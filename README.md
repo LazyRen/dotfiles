@@ -81,6 +81,12 @@ Re-apply configs after changes:
 
 ## Install
 
+> **macOS warning:** Do not clone into a macOS-managed folder (e.g. `~/Documents`, `~/Desktop`).
+> macOS applies extended attributes and sandboxing to files in these directories,
+> which can block access to stowed config files (e.g. git fails with
+> `fatal: unable to access '~/.config/git/config': Operation not permitted`).
+> Use a plain directory like `~/dev` or `~/src` instead.
+
 ```bash
 git clone https://github.com/LazyRen/dotfiles.git
 cd dotfiles
