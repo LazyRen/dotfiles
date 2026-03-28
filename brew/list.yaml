@@ -25,6 +25,7 @@ formula:
   - tlrc
   - uv
   - wget
+  - worktrunk
   - yazi
   - zellij
   - zoxide

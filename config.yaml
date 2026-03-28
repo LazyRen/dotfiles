@@ -13,6 +13,7 @@ apps:
   # - wezterm
   - yazi
   - zellij
+  - worktrunk
   - karabiner
   - os/mac
   # - zsh
