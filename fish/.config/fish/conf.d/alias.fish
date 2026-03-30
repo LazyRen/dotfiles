@@ -4,6 +4,8 @@ abbr -a lt "eza --tree --level=2 --icons"
 
 abbr -a cat "bat"
 
+abbr -a vim "nvim"
+
 abbr -a za "zellij attach -c"
 abbr -a zat 'zellij attach $(zellij ls -s | fzf)'
 

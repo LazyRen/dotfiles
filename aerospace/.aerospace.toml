@@ -38,10 +38,13 @@ alt-shift-right = 'join-with right'
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+# alt-h = 'focus left'
+# alt-j = 'focus down'
+# alt-k = 'focus up'
+# alt-l = 'focus right'
+
+alt-tab = 'focus --boundaries workspace --boundaries-action wrap-around-the-workspace dfs-next'
+alt-shift-tab = 'focus --boundaries workspace --boundaries-action wrap-around-the-workspace dfs-prev'
 
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
@@ -68,9 +71,6 @@ cmd-f4 = 'move-node-to-workspace 4 --focus-follows-window'
 cmd-f5 = 'move-node-to-workspace 5 --focus-follows-window'
 cmd-f6 = 'move-node-to-workspace 6 --focus-follows-window'
 cmd-f7 = 'move-node-to-workspace 7 --focus-follows-window'
-
-alt-tab = 'workspace-back-and-forth'
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 alt-shift-semicolon = 'mode service'
 alt-r = 'mode resize'

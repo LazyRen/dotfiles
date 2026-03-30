@@ -10,6 +10,7 @@ plugins=(
   "dj95/zjstatus/zjframes.wasm"
   "liam-mackie/zsm/zsm.wasm"
   "drop-stones/zellij-loom/zellij-loom.wasm"
+  "fresh2dev/zellij-autolock/zellij-autolock.wasm"
 )
 
 for plugin in "${plugins[@]}"; do

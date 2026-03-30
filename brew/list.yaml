@@ -4,32 +4,39 @@ formula:
   - colima
   - curl
   - eza
-  - fd
-  - ffmpeg-full
   - fish
   - fzf
   - git
   - git-delta
-  - glow
   - htop
-  - imagemagick-full
   - jq
-  - mediainfo
   - mise
-  - poppler
-  - resvg
-  - ripgrep
-  - sevenzip
+  - ruff
   - starship
   - stow
   - tlrc
   - uv
   - wget
   - worktrunk
-  - yazi
   - zellij
   - zoxide
   - zsh
+
+  # yazi
+  - fd
+  - ffmpeg-full
+  - glow
+  - imagemagick-full
+  - mediainfo
+  - poppler
+  - resvg
+  - ripgrep
+  - sevenzip
+  - yazi
+
+  # nvim
+  - neovim
+  - tree-sitter-cli
 
 formula_mac:
   - magicmark/tap/spacelist
@@ -39,7 +46,6 @@ cask:
   - bartender
   - bettertouchtool
   - font-jetbrains-mono-nerd-font
-  - font-symbols-only-nerd-font
   - ghostty
   - iina
   - istat-menus
