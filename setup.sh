@@ -79,7 +79,15 @@ ensure_brew() {
 }
 
 install_brew_packages() {
-  local section=""
+  echo "Updating Homebrew and upgrading installed packages..."
+  brew update
+  brew upgrade
+
+  local installed_formulas installed_casks
+  installed_formulas=$(brew list --formula)
+  installed_casks=$(brew list --cask)
+
+  local section="" formulas=() formulas_mac=() casks=() links=()
   while IFS= read -r line; do
     case "$line" in
       "formula:")     section="formula" ;;
@@ -89,14 +97,35 @@ install_brew_packages() {
       "  - "*)
         local pkg="${line#  - }"
         case "$section" in
-          formula)     brew install "$pkg" ;;
-          formula_mac) $IS_MAC && brew install "$pkg" ;;
-          cask)        $IS_MAC && brew install --cask "$pkg" ;;
-          link)        brew link "$pkg" --force --overwrite ;;
+          formula)     formulas+=("$pkg") ;;
+          formula_mac) $IS_MAC && formulas+=("$pkg") ;;
+          cask)        $IS_MAC && casks+=("$pkg") ;;
+          link)        links+=("$pkg") ;;
         esac
         ;;
     esac
   done < "$DOTFILES_DIR/brew/list.yaml"
+
+  # Install missing formulas
+  for pkg in "${formulas[@]}"; do
+    if ! echo "$installed_formulas" | grep -qx "$pkg"; then
+      echo "Installing formula: $pkg"
+      brew install "$pkg"
+    fi
+  done
+
+  # Install missing casks
+  for pkg in "${casks[@]}"; do
+    if ! echo "$installed_casks" | grep -qx "$pkg"; then
+      echo "Installing cask: $pkg"
+      brew install --cask --adopt "$pkg"
+    fi
+  done
+
+  # Force-link
+  for pkg in "${links[@]}"; do
+    brew link "$pkg" --force --overwrite
+  done
 }
 
 backup_and_stow() {
