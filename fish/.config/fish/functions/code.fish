@@ -1,7 +1,6 @@
 function code --description "Open VS Code (works outside VS Code terminal via SSH)"
-    # If a real `code` binary exists (i.e. running locally), use it directly
-    set -l real_code (command -s code)
-    if test -n "$real_code"
+    # If not in an SSH session, use the local binary directly
+    if not set -q SSH_CONNECTION
         command code $argv
         return $status
     end
