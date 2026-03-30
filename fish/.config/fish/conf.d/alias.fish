@@ -23,9 +23,15 @@ abbr -a gpl "git pull"
 abbr -a grbc "git rebase --continue"
 abbr -a grba "git rebase --abort"
 abbr -a gresetlastcommit "git reset --hard HEAD~1"
-abbr -a gresetremote 'git reset --hard origin/(git branch --show-current)'
+abbr -a gresetremote 'git reset --hard @{u}'
 abbr -a grs "git restore"
 abbr -a grss "git restore --staged"
 abbr -a gs "git status"
+
+abbr -a wts "wt switch"
+abbr -a wtsc "wt switch --create"
+abbr -a wtl "wt list"
+abbr -a wtr "wt remove"
+abbr -a wtm "wt merge"
 
 abbr -a opus 'claude --model "opus[1m]" --dangerously-skip-permissions'
