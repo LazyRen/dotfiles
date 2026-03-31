@@ -52,7 +52,6 @@ keybinds clear-defaults=true {
     // Mode: locked
     locked {
         bind "Alt g" { SwitchToMode "normal"; }
-        bind "Ctrl a" { SwitchToMode "tmux_locked"; }
     }
 
     // Mode: tmux (Ctrl a)
@@ -129,84 +128,6 @@ keybinds clear-defaults=true {
         bind "7" { GoToTab 7; SwitchToMode "normal"; }
         bind "8" { GoToTab 8; SwitchToMode "normal"; }
         bind "9" { GoToTab 9; SwitchToMode "normal"; }
-    }
-
-    // Mode: tmux_locked (Ctrl a from locked mode)
-    // Duplicate of tmux mode, but returns to "locked" instead of "normal".
-    // Keep in sync with tmux mode above.
-    tmux_locked {
-        bind "Ctrl a" { Write 2; SwitchToMode "locked"; }
-        bind "left" { MoveFocus "left"; SwitchToMode "locked"; }
-        bind "down" { MoveFocus "down"; SwitchToMode "locked"; }
-        bind "up" { MoveFocus "up"; SwitchToMode "locked"; }
-        bind "right" { MoveFocus "right"; SwitchToMode "locked"; }
-        bind "h" { MoveFocus "left"; SwitchToMode "locked"; }
-        bind "j" { MoveFocus "down"; SwitchToMode "locked"; }
-        bind "k" { MoveFocus "up"; SwitchToMode "locked"; }
-        bind "l" { MoveFocus "right"; SwitchToMode "locked"; }
-
-        bind "w" {
-            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij-loom.wasm" {
-                floating true
-                move_to_focused_tab true
-            }
-            SwitchToMode "locked"
-        }
-
-        bind "space" { NextSwapLayout; SwitchToMode "locked"; }
-        bind "\"" { NewPane "down"; SwitchToMode "locked"; }
-        bind "'" { NewPane "down"; SwitchToMode "locked"; }
-        bind "-" { NewPane "down"; SwitchToMode "locked"; }
-        bind "%" { NewPane "right"; SwitchToMode "locked"; }
-        bind ";" { NewPane "right"; SwitchToMode "locked"; }
-        bind "\\" { NewPane "right"; SwitchToMode "locked"; }
-
-        bind "s" {
-            LaunchOrFocusPlugin "session-manager" {
-                floating true
-                move_to_focused_tab true
-            }
-            SwitchToMode "locked"
-        }
-
-        bind "[" { MovePaneBackwards; SwitchToMode "locked"; }
-        bind "]" { MovePane; SwitchToMode "locked"; }
-
-        bind "t" {
-            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
-                floating true
-                ignore_case true
-                quick_jump true
-                move_to_focused_tab true
-            }
-            SwitchToMode "locked"
-        }
-        bind "c" { NewTab; SwitchToMode "locked"; }
-        bind "," { SwitchToMode "renametab"; TabNameInput 0; }
-
-        bind "n" { GoToNextTab; SwitchToMode "locked"; }
-        bind "p" { GoToPreviousTab; SwitchToMode "locked"; }
-        bind "Tab" { GoToNextTab; SwitchToMode "locked"; }
-        bind "Shift Tab" { GoToPreviousTab; SwitchToMode "locked"; }
-
-        bind "z" { ToggleFocusFullscreen; SwitchToMode "locked"; }
-        bind "f" { ToggleFloatingPanes; SwitchToMode "locked"; }
-        bind "r" { SwitchToMode "resize"; }
-
-        bind "<" { PreviousSwapLayout; SwitchToMode "locked"; }
-        bind "i" { MoveTab "left"; SwitchToMode "locked"; }
-        bind "o" { MoveTab "right"; SwitchToMode "locked"; }
-        bind "q" { Quit; }
-
-        bind "1" { GoToTab 1; SwitchToMode "locked"; }
-        bind "2" { GoToTab 2; SwitchToMode "locked"; }
-        bind "3" { GoToTab 3; SwitchToMode "locked"; }
-        bind "4" { GoToTab 4; SwitchToMode "locked"; }
-        bind "5" { GoToTab 5; SwitchToMode "locked"; }
-        bind "6" { GoToTab 6; SwitchToMode "locked"; }
-        bind "7" { GoToTab 7; SwitchToMode "locked"; }
-        bind "8" { GoToTab 8; SwitchToMode "locked"; }
-        bind "9" { GoToTab 9; SwitchToMode "locked"; }
     }
 
     // Mode: pane (Alt p)
