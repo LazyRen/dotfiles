@@ -1,5 +1,6 @@
 formula:
   - atuin
+  - bash
   - bat
   - colima
   - curl
@@ -37,6 +38,7 @@ formula:
   # nvim
   - neovim
   - tree-sitter-cli
+  - lazygit
 
 formula_mac:
   - magicmark/tap/spacelist
