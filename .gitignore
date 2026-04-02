@@ -4,6 +4,7 @@
 fish/.config/fish/conf.d/local.fish
 fish/.config/fish/functions/local/
 karabiner/.config/karabiner/automatic_backups/
+nvim/.config/nvim/lazy-lock.json
 
 # Generated from .tmpl templates (run setup.sh to regenerate)
 bat/.config/bat/config
