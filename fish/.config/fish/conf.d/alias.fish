@@ -2,14 +2,15 @@ abbr -a ls "eza --icons --group-directories-first"
 abbr -a ll "eza -la --icons --group-directories-first"
 abbr -a lt "eza --tree --level=2 --icons"
 
-abbr -a cat "bat"
+abbr -a cat bat
 
-abbr -a vim "nvim"
+abbr -a vim nvim
+abbr -a vi nvim
 
 abbr -a za "zellij attach -c"
 abbr -a zat 'zellij attach $(zellij ls -s | fzf)'
 
-abbr -a ff "spacelist"
+abbr -a ff spacelist
 
 abbr -a gaa "git add --all"
 abbr -a gc "git commit"
