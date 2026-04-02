@@ -39,6 +39,8 @@ formula:
   - neovim
   - tree-sitter-cli
   - lazygit
+  - luarocks
+  - lua
 
 formula_mac:
   - magicmark/tap/spacelist
