@@ -27,4 +27,4 @@ fish -c "
   fisher update
 "
 
-fish -c "fish_update_completions" &
+fish -c "fish_update_completions" &>/dev/null &
