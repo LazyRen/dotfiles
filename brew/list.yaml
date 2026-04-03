@@ -38,7 +38,7 @@ formula:
   # nvim
   - lazygit
   - luarocks
-  - mmdc
+  - mermaid-cli
   - neovim
   - tree-sitter-cli
 
