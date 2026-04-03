@@ -36,11 +36,11 @@ formula:
   - yazi
 
   # nvim
-  - neovim
-  - tree-sitter-cli
   - lazygit
   - luarocks
-  - lua
+  - mmdc
+  - neovim
+  - tree-sitter-cli
 
 formula_mac:
   - magicmark/tap/spacelist
