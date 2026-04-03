@@ -7,10 +7,23 @@ IS_MAC=false
 SKIP_BREW=false
 THEME=false
 
+usage() {
+  cat <<'EOF'
+Usage: setup.sh [OPTIONS]
+
+Options:
+  --skip-brew        Skip Homebrew installation and package updates
+  --update-configs   Only render theme templates, then exit
+  -h, --help         Show this help message
+EOF
+  exit 0
+}
+
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --skip-brew)  SKIP_BREW=true; shift ;;
     --update-configs) THEME=true; shift ;;
+    -h|--help) usage ;;
     *) echo "Unknown option: $1"; exit 1 ;;
   esac
 done
