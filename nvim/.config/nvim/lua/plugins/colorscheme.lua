@@ -6,6 +6,11 @@ return {
       style = "darker",
       transparent = true,
       lualine = { transparent = false },
+      highlights = {
+        SnacksDashboardHeader = { fg = "#61afef" },
+        StatusLine = { bg = "NONE", ctermbg = "NONE" },
+        StatusLineNC = { bg = "NONE", ctermbg = "NONE" },
+      },
     },
   },
   {
