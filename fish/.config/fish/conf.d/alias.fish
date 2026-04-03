@@ -9,6 +9,8 @@ abbr -a vi nvim
 
 abbr -a za "zellij attach -c"
 abbr -a zat 'zellij attach $(zellij ls -s | fzf)'
+abbr -a zda "zellij delete-all-sessions"
+abbr -a zka "zellij kill-all-sessions"
 
 abbr -a ff spacelist
 
