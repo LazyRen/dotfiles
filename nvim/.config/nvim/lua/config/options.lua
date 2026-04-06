@@ -10,6 +10,13 @@ o.autoindent = true
 o.copyindent = true
 o.breakindent = true
 
+local function my_paste()
+  return function()
+    local content = vim.fn.getreg('"')
+    return vim.split(content, "\n")
+  end
+end
+
 if os.getenv("SSH_TTY") then
   -- LazyVim disables clipboard over SSH; re-enable with OSC52 provider
   o.clipboard = "unnamedplus"
@@ -20,8 +27,8 @@ if os.getenv("SSH_TTY") then
       ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
     },
     paste = {
-      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+      ["+"] = my_paste(),
+      ["*"] = my_paste(),
     },
   }
 end
