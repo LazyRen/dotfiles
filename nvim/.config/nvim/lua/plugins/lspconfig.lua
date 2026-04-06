@@ -2,7 +2,7 @@
 ---@param build_dir string
 ---@return string|nil profile_name
 local function find_hana_profile(build_dir)
-  local preferred = { "ClangOptimizedMold", "ClangOptimized", "Optimized" }
+  local preferred = { "ClangOptimizedMold", "ClangOptimized", "OptimizedMold", "Optimized" }
   for _, profile in ipairs(preferred) do
     if vim.uv.fs_stat(build_dir .. "/" .. profile .. "/compile_commands.json") then
       return profile
@@ -37,6 +37,7 @@ end
 return {
   "neovim/nvim-lspconfig",
   opts = {
+    autoformat = false,
     servers = {
       clangd = {
         root_markers = {
