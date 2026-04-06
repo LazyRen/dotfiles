@@ -1,6 +1,8 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 local o = vim.o
 
+vim.g.autoformat = false
+
 o.shiftwidth = 4
 o.tabstop = 4
 o.softtabstop = 4
