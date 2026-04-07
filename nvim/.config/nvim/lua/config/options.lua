@@ -11,6 +11,7 @@ o.smarttab = true
 o.autoindent = true
 o.copyindent = true
 o.breakindent = true
+o.spelloptions = "camel"
 
 local function my_paste()
   return function()
