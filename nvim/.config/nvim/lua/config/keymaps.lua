@@ -6,3 +6,5 @@ vim.keymap.set("i", "jj", "<ESC>", { silent = true })
 
 vim.keymap.set({ "n", "v" }, "<PageUp>", "<C-u>", { silent = true })
 vim.keymap.set({ "n", "v" }, "<PageDown>", "<C-d>", { silent = true })
+
+vim.keymap.set({ "n", "v" }, "<C-a>", "^", { silent = true })
