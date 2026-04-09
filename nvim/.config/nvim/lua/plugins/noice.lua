@@ -12,5 +12,11 @@ return {
         },
       },
     },
+    routes = {
+      {
+        filter = { event = "lsp", kind = "progress", find = "pyright" },
+        opts = { skip = true },
+      },
+    },
   },
 }
