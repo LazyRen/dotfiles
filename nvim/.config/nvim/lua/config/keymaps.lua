@@ -5,4 +5,8 @@
 vim.keymap.set({ "n", "v" }, "<PageUp>", "<C-u>", { silent = true })
 vim.keymap.set({ "n", "v" }, "<PageDown>", "<C-d>", { silent = true })
 
+-- Disable yank on delete
+vim.keymap.set({ "n", "v" }, "d", '"_d', { noremap = true })
+vim.keymap.set("n", "dd", '"_dd', { noremap = true })
+
 Snacks.toggle.zoom():map("<leader>z")
