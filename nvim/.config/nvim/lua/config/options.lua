@@ -2,6 +2,7 @@
 local o = vim.o
 
 vim.g.autoformat = false
+vim.g.snacks_animate = false
 
 -- Indentation
 o.shiftwidth = 4
