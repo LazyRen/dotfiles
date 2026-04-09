@@ -23,7 +23,9 @@ vim.api.nvim_create_autocmd("QuitPre", {
       end
     end
     if #windows - #floating_windows - #snacks_windows <= 1 then
-      vim.cmd("qa")
+      for _, w in ipairs(snacks_windows) do
+        pcall(vim.api.nvim_win_close, w, true)
+      end
     end
   end,
 })
