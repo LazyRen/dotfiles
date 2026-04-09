@@ -376,8 +376,8 @@ hi("SnacksDashboardDesc", { fg = c.cyan })
 hi("SnacksDashboardIcon", { fg = c.cyan })
 hi("SnacksDashboardKey", { fg = c.blue })
 hi("SnacksPicker", { fg = c.fg, bg = bg })
-hi("SnacksPickerBorder", { fg = c.cyan })
-hi("SnacksPickerTitle", { fg = c.red })
+hi("SnacksPickerBorder", { fg = c.blue })
+hi("SnacksPickerTitle", { fg = c.purple })
 hi("SnacksPickerMatch", { fg = c.orange, bold = true })
 
 -- ============================================================
