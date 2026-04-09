@@ -1,0 +1,12 @@
+#!/bin/bash
+# Set focused window to a percentage of screen width
+# Usage: aerospace-set-size <percent> [width|height]
+
+percent=${1:?Usage: aerospace-set-size <percent> [width|height]}
+dimension=${2:-width}
+
+screen_size=$(osascript -e "tell application \"Finder\" to get item $([[ "$dimension" == "height" || "$dimension" == "h" ]] && echo 4 || echo 3) of (get bounds of window of desktop)" 2>/dev/null)
+screen_size=${screen_size:-2560}
+
+new=$((screen_size * percent / 100))
+aerospace resize "${dimension%% *}" "$new"

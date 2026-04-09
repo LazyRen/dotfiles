@@ -56,6 +56,10 @@ alt-shift-minus = 'resize smart -100'
 alt-equal = 'resize smart +50'
 alt-shift-equal = 'resize smart +100'
 
+ctrl-shift-alt-cmd-1 = 'exec-and-forget ~/.config/bin/aerospace-set-size 33'
+ctrl-shift-alt-cmd-2 = 'exec-and-forget ~/.config/bin/aerospace-set-size 50'
+ctrl-shift-alt-cmd-3 = 'exec-and-forget ~/.config/bin/aerospace-set-size 66'
+
 ctrl-1 = 'workspace 1'
 ctrl-2 = 'workspace 2'
 ctrl-3 = 'workspace 3'
@@ -151,4 +155,8 @@ run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'com.jamfsoftware.selfservice.mac'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.aone.keka'
 run = 'layout floating'
