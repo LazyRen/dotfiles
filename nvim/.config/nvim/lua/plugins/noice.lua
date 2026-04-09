@@ -11,6 +11,12 @@ return {
           col = "50%",
         },
       },
+      confirm = {
+        position = {
+          row = "50%",
+          col = "50%",
+        },
+      },
     },
     routes = {
       {
