@@ -14,6 +14,8 @@ abbr -a zka "zellij kill-all-sessions"
 
 abbr -a ff spacelist
 
+abbr -a fg "git-forgit"
+
 abbr -a gaa "git add --all"
 abbr -a gc "git commit"
 abbr -a gca "git commit --amend"
