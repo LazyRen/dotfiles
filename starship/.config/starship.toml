@@ -46,16 +46,18 @@ truncation_symbol = "…"
 format = "[$all_status$ahead_behind]($style)"
 style = ""
 conflicted = "[~$count](red) "
-stashed = "[≡$count](green) "
-staged = "[+$count](yellow) "
-modified = "[!$count](yellow) "
-untracked = "[?$count](cyan) "
 ahead = "[⇡$count](green) "
 behind = "[⇣$count](green) "
 diverged = "[⇕⇣${behind_count}⇡${ahead_count}](green) "
+untracked = "[?$count](cyan) "
+stashed = "[≡$count](green) "
+staged = "[+$count](yellow) "
+modified = "[!$count](yellow) "
+renamed = "[»$count](yellow) "
+deleted = "[✘$count](red) "
 
 [git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
+format = '\([$state($progress_current/$progress_total)]($style)\) '
 style = "yellow"
 rebase = "REBASING"
 merge = "MERGING"
@@ -66,8 +68,10 @@ am = "AM"
 am_or_rebase = "AM/REBASE"
 
 [git_metrics]
+format = '([▴$added ]($added_style))([▿$deleted ]($deleted_style))'
+added_style = 'italic green'
+deleted_style = 'italic red'
 disabled = false
-format = "([+$added](green) )([-$deleted](red) )"
 
 [cmd_duration]
 format = "[$duration]($style) "
