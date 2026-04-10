@@ -8,6 +8,7 @@ apps:
   - fish
   - ghostty
   - git
+  # - hyper
   - starship
   # - vscode # Only cspell user dictionary
   # - wezterm
