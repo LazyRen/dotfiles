@@ -37,7 +37,7 @@ error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 
 [git_branch]
-format = "[$branch]($style) "
+format = "[$branch(:$remote_branch)]($style) "
 style = "green"
 truncation_length = 32
 truncation_symbol = "…"
@@ -50,9 +50,9 @@ stashed = "[≡$count](green) "
 staged = "[+$count](yellow) "
 modified = "[!$count](yellow) "
 untracked = "[?$count](cyan) "
-ahead = "[⇡$count](green)"
-behind = "[⇣$count](green)"
-diverged = "[⇕⇣${behind_count}⇡${ahead_count}](green)"
+ahead = "[⇡$count](green) "
+behind = "[⇣$count](green) "
+diverged = "[⇕⇣${behind_count}⇡${ahead_count}](green) "
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
