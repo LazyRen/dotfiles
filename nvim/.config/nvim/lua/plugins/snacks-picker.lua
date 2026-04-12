@@ -28,6 +28,22 @@ return {
         files = {
           hidden = true,
         },
+        explorer = {
+          hidden = true,
+          layout = {
+            auto_hide = { "input" },
+            hidden = { "input" },
+            layout = { position = "right" },
+          },
+          enter = false,
+          win = {
+            input = {
+              keys = {
+                ["<Esc>"] = { "toggle_input", mode = { "n", "i" } },
+              },
+            },
+          },
+        },
       },
       win = {
         input = {
