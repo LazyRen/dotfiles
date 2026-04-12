@@ -12,7 +12,7 @@ function M.get(c, bg)
     SnacksPickerBorder = { fg = c.blue },
     SnacksPickerTitle = { fg = c.purple },
     SnacksPickerMatch = { fg = c.orange, bold = true },
-    SnacksIndent = { fg = c.bg_hl },
+    SnacksIndent = { fg = c.grey },
     SnacksIndent1 = { fg = c.red },
     SnacksIndent2 = { fg = c.orange },
     SnacksIndent3 = { fg = c.yellow },
