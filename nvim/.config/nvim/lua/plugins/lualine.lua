@@ -2,11 +2,17 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
-      opts.options.component_separators = ""
-      opts.options.section_separators = { left = "", right = "" }
+      opts.options.component_separators = { left = "╲", right = "╱" }
+      opts.options.section_separators = { left = "", right = "" }
       opts.options.disabled_filetypes.winbar = opts.options.disabled_filetypes.statusline
 
-      opts.sections.lualine_c[4] = { LazyVim.lualine.pretty_path({ length = 8 }) }
+      opts.sections.lualine_a = { "mode" }
+      opts.sections.lualine_b = { LazyVim.lualine.root_dir() }
+      opts.sections.lualine_c = {
+        { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+        { LazyVim.lualine.pretty_path({ length = 8 }) },
+      }
+      opts.sections.lualine_z = { "branch" }
 
       table.insert(opts.sections.lualine_x, {
         function()
@@ -22,15 +28,10 @@ return {
         color = { fg = require("onedark.palette").cyan },
       })
 
-      opts.sections.lualine_z = {
-        function()
-          return os.date("%R")
-        end
+      opts.winbar = {
+        lualine_b = { "filename" },
+        lualine_c = { { "navic", color_correction = "dynamic" } },
       }
-
-      -- move navic from statusline to winbar
-      local navic = table.remove(opts.sections.lualine_c)
-      opts.winbar = { lualine_b = { "filename" }, lualine_c = { navic } }
       opts.inactive_winbar = { lualine_b = { "filename" } }
     end,
   },
