@@ -6,6 +6,8 @@ return {
       opts.options.section_separators = { left = "", right = "" }
       opts.options.disabled_filetypes.winbar = opts.options.disabled_filetypes.statusline
 
+      opts.sections.lualine_c[4] = { LazyVim.lualine.pretty_path({ length = 8 }) }
+
       table.insert(opts.sections.lualine_x, {
         function()
           local clients = vim.lsp.get_clients({ bufnr = 0 })
