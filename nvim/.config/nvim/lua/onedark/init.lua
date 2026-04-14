@@ -29,8 +29,8 @@ function M.load()
 
   -- Plugin integrations
   local integrations = {
-    "blink_cmp", "bufferline", "gitsigns", "snacks",
-    "whichkey", "mini", "indent_blankline",
+    "blink_cmp", "bufferline", "codediff", "gitsigns",
+    "snacks", "whichkey", "mini", "indent_blankline",
   }
   for _, name in ipairs(integrations) do
     merge(require("onedark.groups.integrations." .. name).get(c, bg))

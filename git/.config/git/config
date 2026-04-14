@@ -34,6 +34,14 @@
 
 [merge]
     conflictstyle = zdiff3
+    tool = codediff
+
+[mergetool "codediff"]
+    cmd = nvim "$MERGED" -c "CodeDiff merge \"$MERGED\""
 
 [diff]
     colorMoved = default
+    tool = codediff
+
+[difftool "codediff"]
+    cmd = nvim "$LOCAL" "$REMOTE" +"CodeDiff file $LOCAL $REMOTE"
