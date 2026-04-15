@@ -15,3 +15,5 @@ yazi/.config/yazi/theme.toml
 zellij/.config/zellij/config.kdl
 zellij/.config/zellij/layouts/default.kdl
 zellij/.config/zellij/plugins/
+zellij/.config/zellij/themes/custom.kdl
+

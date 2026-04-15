@@ -35,11 +35,16 @@ plugins {
         triggers "nvim|vim"
         reaction_seconds "0.3"
     }
+    zellij-attention location="file:~/.config/zellij/plugins/zellij-attention.wasm" {
+        waiting_icon " "
+        completed_icon " "
+    }
 }
 
 load_plugins {
     autolock
     compact-bar
+    zellij-attention
     "$HOME/.config/zellij/plugins/zjframes.wasm" {
         hide_frame_except_for_fullscreen true
         hide_frame_except_for_scroll true

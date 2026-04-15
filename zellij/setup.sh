@@ -11,13 +11,14 @@ plugins=(
   "liam-mackie/zsm/zsm.wasm"
   "drop-stones/zellij-loom/zellij-loom.wasm"
   "fresh2dev/zellij-autolock/zellij-autolock.wasm"
+  "KiryuuLight/zellij-attention/zellij-attention.wasm"
 )
 
 for plugin in "${plugins[@]}"; do
   repo="${plugin%/*}"
   file="${plugin##*/}"
   echo "Installing zellij plugin: $file"
-  if ! curl -sfL "https://github.com/$repo/releases/latest/download/$file" -o "$PLUGIN_DIR/$file"; then
+  if ! curl -sfL -z "https://github.com/$repo/releases/latest/download/$file" -o "$PLUGIN_DIR/$file"; then
     echo "  Warning: Failed to download $file"
   fi
 done

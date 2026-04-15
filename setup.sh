@@ -51,6 +51,11 @@ parse_yaml_scalar() {
   done < "$file"
 }
 
+hex_to_rgb() {
+  local hex="${1#\#}"
+  printf "%d %d %d" "0x${hex:0:2}" "0x${hex:2:2}" "0x${hex:4:2}"
+}
+
 parse_theme() {
   local theme_file="$1"
   THEME_KEYS=()
@@ -62,6 +67,11 @@ parse_theme() {
     val="${val#\"}" ; val="${val%\"}"
     THEME_KEYS+=("$key")
     THEME_VALS+=("$val")
+    # Auto-generate _rgb variant for hex color values
+    if [[ "$val" =~ ^#[0-9a-fA-F]{6}$ ]]; then
+      THEME_KEYS+=("${key}_rgb")
+      THEME_VALS+=("$(hex_to_rgb "$val")")
+    fi
   done < "$theme_file"
 }
 
