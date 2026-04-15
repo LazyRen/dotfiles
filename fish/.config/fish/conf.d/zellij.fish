@@ -1,8 +1,8 @@
-function zellij_tab_name_update --on-variable PWD
+function zellij_tab_name_update --on-variable PWD --on-event fish_postexec
     set -q ZELLIJ; or return
 
     set -l tab_name
-    if git rev-parse --is-inside-work-tree &>/dev/null
+    if test "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = true
         set -l root (basename (git rev-parse --show-toplevel))
         set -l prefix (string trim -c / (git rev-parse --show-prefix))
         set tab_name $root
@@ -14,6 +14,14 @@ function zellij_tab_name_update --on-variable PWD
     end
 
     command zellij action rename-tab $tab_name &>/dev/null &
+    disown
+end
+
+function zellij_tab_name_update_preexec --on-event fish_preexec
+    set -q ZELLIJ; or return
+
+    set -l title (string split ' ' $argv)[1]
+    command zellij action rename-tab $title &>/dev/null &
     disown
 end
 
