@@ -2,6 +2,34 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Environment
+
+My primary environments: macOS (personal) and Linux (remote dev servers via SSH). Tools: Fish shell, Neovim (LazyVim), Zellij, Ghostty, AeroSpace, Starship prompt, OneDark theme. Languages: Python, Shell/Fish, Lua (neovim config), YAML, some C++/Rust. Always consider cross-platform differences when relevant.
+
+## Communication Style
+
+When I ask a quick question, give a concise answer first. Don't start with lengthy explanations or background — get to the point, then elaborate if I ask.
+
+Don't make edits I didn't ask for. If I ask for proofreading, only proofread. If I ask a question, answer the question — don't also apply fixes or refactor code unless explicitly requested.
+
+Check CLAUDE.md for environment details before answering. I use Fish shell (not bash/zsh), LazyVim (not vanilla nvim), and my dotfiles use sed-based templating. Make sure answers account for these specifics.
+
+## Approach
+
+Before making any changes, outline 2-3 possible approaches with pros/cons. Tell me which one you'd recommend and why. Wait for my approval before proceeding. If your first approach fails, stop and reassess rather than trying variations.
+
+## Accuracy
+
+Before suggesting a feature, keybinding, or API exists, verify it in the actual documentation or source code. Never fabricate keybindings, config options, or tool capabilities. If unsure, say so.
+
+## Dotfiles
+
+My dotfiles use a templating system (sed-based, no complex logic). Don't assume template engines with hex-to-RGB conversion or advanced features — check the existing templating approach first before making changes.
+
+## Config Editing Rules
+
+When editing config files (Neovim, Zellij, Fish, AeroSpace), always read the existing file structure first. Pay attention to nesting levels, load order, and which file is project-level vs global. Don't overwrite existing sections — append or merge carefully.
+
 ## Overview
 
 Dotfiles repository managing configurations for: Ghostty, Fish, Starship, Zellij, (and optionally Wezterm, Zsh). Uses GNU Stow for symlink management.
