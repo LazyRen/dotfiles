@@ -34,7 +34,7 @@ home_symbol = "~"
 [character]
 success_symbol = "[❯](green)"
 error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+vimcmd_symbol = "[:](green)"
 
 [git_branch]
 format = "[$branch(:$remote_branch)]($style) "
@@ -126,7 +126,9 @@ symbol = "☸ "
 style = "cyan"
 
 [custom.git_commit_msg]
+description = "Show the latest git commit message"
 command = "git log -1 --pretty=format:'%s' 2>/dev/null"
 when = "git rev-parse --is-inside-work-tree 2>/dev/null"
 format = "[$output]($style) "
 style = "bright-black italic"
+require_repo = true
