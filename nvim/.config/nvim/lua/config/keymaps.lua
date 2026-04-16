@@ -11,4 +11,8 @@ vim.keymap.set("n", "dd", '"_dd', { noremap = true })
 vim.keymap.set({ "n", "v" }, "c", '"_c', { noremap = true })
 vim.keymap.set("n", "cc", '"_cc', { noremap = true })
 
+-- Select all
+vim.keymap.set({ "n", "v" }, "<C-a>", "<Nop>")
+vim.keymap.set("n", "<C-a>", "G$vgg0", { desc = "Select all" })
+
 Snacks.toggle.zoom():map("<leader>z")
