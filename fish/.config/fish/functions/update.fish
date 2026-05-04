@@ -25,8 +25,6 @@ function update -d "Update all package managers and apps"
 
     # mise (manages runtimes: node, python, ruby, etc.)
     if command -q mise
-        _update_step "mise self-update"
-        mise self-update
         _update_step "mise upgrade"
         mise upgrade
     end
@@ -41,15 +39,6 @@ function update -d "Update all package managers and apps"
     if command -q npm
         _update_step "npm update -g"
         npm update -g
-    end
-
-    # pip (via uv if available, else raw pip)
-    if command -q uv
-        _update_step "uv self update"
-        uv self update
-    else if command -q pip3
-        _update_step "pip3 install --upgrade pip"
-        pip3 install --upgrade pip
     end
 
     functions -e _update_step
