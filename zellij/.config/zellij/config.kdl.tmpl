@@ -55,7 +55,6 @@ load_plugins {
 
 // Keybinds
 keybinds clear-defaults=true {
-
     // Mode: locked
     locked {
         bind "Alt g" { SwitchToMode "normal"; }
@@ -82,7 +81,6 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
 
-        bind "space" { NextSwapLayout; SwitchToMode "normal"; }
         bind "\"" { NewPane "down"; SwitchToMode "normal"; }
         bind "'" { NewPane "down"; SwitchToMode "normal"; }
         bind "-" { NewPane "down"; SwitchToMode "normal"; }
@@ -123,6 +121,7 @@ keybinds clear-defaults=true {
         bind "r" { SwitchToMode "resize"; }
 
         bind "<" { PreviousSwapLayout; SwitchToMode "normal"; }
+        bind ">" { NextSwapLayout; SwitchToMode "normal"; }
         bind "i" { MoveTab "left"; SwitchToMode "normal"; }
         bind "o" { MoveTab "right"; SwitchToMode "normal"; }
         bind "q" { Quit; }
