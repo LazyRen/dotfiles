@@ -9,6 +9,18 @@ local char_del = blend(c.red, c.bg0, 0.30)
 return {
   "esmuellert/codediff.nvim",
   cmd = "CodeDiff",
+  keys = {
+    { "]x", desc = "Next conflict" },
+    { "[x", desc = "Prev conflict" },
+    { "<leader>ct", desc = "Accept incoming (theirs)" },
+    { "<leader>co", desc = "Accept current (ours)" },
+    { "<leader>cb", desc = "Accept both" },
+    { "<leader>cx", desc = "Discard both" },
+    { "<leader>cT", desc = "Accept all incoming" },
+    { "<leader>cO", desc = "Accept all current" },
+    { "<leader>cB", desc = "Accept all both" },
+    { "<leader>cX", desc = "Discard all" },
+  },
   opts = {
     highlights = {
       line_insert = line_add,
