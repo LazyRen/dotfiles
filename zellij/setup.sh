@@ -18,7 +18,7 @@ for plugin in "${plugins[@]}"; do
   repo="${plugin%/*}"
   file="${plugin##*/}"
   echo "Installing zellij plugin: $file"
-  if ! curl -sfL -z "https://github.com/$repo/releases/latest/download/$file" -o "$PLUGIN_DIR/$file"; then
+  if ! curl -sfL -z "$PLUGIN_DIR/$file" -o "$PLUGIN_DIR/$file" "https://github.com/$repo/releases/latest/download/$file"; then
     echo "  Warning: Failed to download $file"
   fi
 done
