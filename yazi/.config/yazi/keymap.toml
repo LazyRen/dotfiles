@@ -4,7 +4,7 @@ prepend_keymap = [
   { on = "f", run = "plugin fg --args='fzf'", desc = "Find file by fzf" },
   { on = "F", run = "plugin fg --args='rg'", desc = "Find file by ripgrep" },
   { on = "z", run = "plugin zoxide", desc = "Jump with zoxide" },
-  { on = "T", run = "plugin max-preview", desc = "Toggle max preview" },
+  { on = "T", run = "plugin toggle-pane --args=max-preview", desc = "Toggle max preview" },
   { on = "<C-o>", run = 'shell -- open .', desc = "Open Finder here" },
   { on = "y", run = ['shell -- echo "$@" | pbcopy', "yank"], desc = "Yank and copy path to clipboard" },
   { on = "p", run = "plugin smart-paste", desc = "Paste into hovered dir or cwd" },
