@@ -1,16 +1,16 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "efa4d79"
+rev = "c591a36"
 hash = "f281261ff04ad7ec867c3f802a50835f"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "efa4d79"
+rev = "c591a36"
 hash = "187cc58ba7ac3befd49c342129e6f1b6"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-paste"
-rev = "efa4d79"
+rev = "c591a36"
 hash = "3f8d49413bc8691b4c652eb417a20178"
 
 [[plugin.deps]]
@@ -31,7 +31,7 @@ hash = "9776f378459072b6c2875eae5addc49d"
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
 rev = "e079a00"
-hash = "8d3ae0dcbead9aac4d9384d51915ecad"
+hash = "8dd8bc3484547390ba50dfa58d7436b0"
 
 [[plugin.deps]]
 use = "DreamMaoMao/fg"
