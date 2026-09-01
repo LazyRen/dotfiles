@@ -15,12 +15,12 @@ hash = "3f8d49413bc8691b4c652eb417a20178"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "efa4d79"
+rev = "c591a36"
 hash = "5bb0bfab901d3601c370eafdd66edd31"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "efa4d79"
+rev = "c591a36"
 hash = "5b2fbef7d1513ce38ff72623a071a5e"
 
 [[plugin.deps]]
@@ -31,7 +31,7 @@ hash = "9776f378459072b6c2875eae5addc49d"
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
 rev = "e079a00"
-hash = "8dd8bc3484547390ba50dfa58d7436b0"
+hash = "8d3ae0dcbead9aac4d9384d51915ecad"
 
 [[plugin.deps]]
 use = "DreamMaoMao/fg"
