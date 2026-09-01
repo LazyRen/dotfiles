@@ -16,3 +16,6 @@ vim.keymap.set({ "n", "v" }, "<C-a>", "<Nop>")
 vim.keymap.set("n", "<C-a>", "G$vgg0", { desc = "Select all" })
 
 Snacks.toggle.zoom():map("<leader>z")
+
+-- Alias for <leader>| vertical split
+vim.keymap.set("n", "<leader>\\", "<C-W>v", { desc = "Split Window Right", remap = true })
