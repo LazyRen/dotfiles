@@ -12,6 +12,7 @@ plugins=(
   "drop-stones/zellij-loom/zellij-loom.wasm"
   "fresh2dev/zellij-autolock/zellij-autolock.wasm"
   "KiryuuLight/zellij-attention/zellij-attention.wasm"
+  "hiasr/vim-zellij-navigator/vim-zellij-navigator.wasm"
 )
 
 for plugin in "${plugins[@]}"; do

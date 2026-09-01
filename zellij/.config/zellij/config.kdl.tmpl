@@ -45,7 +45,7 @@ load_plugins {
     autolock
     compact-bar
     zellij-attention
-    "$HOME/.config/zellij/plugins/zjframes.wasm" {
+    "~/.config/zellij/plugins/zjframes.wasm" {
         hide_frame_except_for_fullscreen true
         hide_frame_except_for_scroll true
         hide_frame_except_for_search true
@@ -59,6 +59,28 @@ keybinds clear-defaults=true {
     locked {
         bind "Alt g" { SwitchToMode "normal"; }
         bind "Ctrl a" { SwitchToMode "tmux"; }
+
+        // Pane resize (only when Neovim focused via autolock)
+        bind "Alt h" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "resize"; payload "left"; resize_mod "alt";
+            };
+        }
+        bind "Alt j" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "resize"; payload "down"; resize_mod "alt";
+            };
+        }
+        bind "Alt k" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "resize"; payload "up"; resize_mod "alt";
+            };
+        }
+        bind "Alt l" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "resize"; payload "right"; resize_mod "alt";
+            };
+        }
     }
 
     // Mode: tmux (Ctrl a)
@@ -290,6 +312,28 @@ keybinds clear-defaults=true {
         // bind "Alt +" { Resize "Increase"; }
         // bind "Alt -" { Resize "Decrease"; }
         // bind "Alt =" { Resize "Increase"; }
+
+        // Zellij<->Neovim seamless navigation (vim-zellij-navigator)
+        bind "Ctrl h" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "move_focus_or_tab"; payload "left"; move_mod "ctrl";
+            };
+        }
+        bind "Ctrl j" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "move_focus_or_tab"; payload "down"; move_mod "ctrl";
+            };
+        }
+        bind "Ctrl k" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "move_focus_or_tab"; payload "up"; move_mod "ctrl";
+            };
+        }
+        bind "Ctrl l" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "move_focus_or_tab"; payload "right"; move_mod "ctrl";
+            };
+        }
 
         bind "Alt g" { SwitchToMode "locked"; }
     }
