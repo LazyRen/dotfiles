@@ -345,6 +345,7 @@ keybinds clear-defaults=true {
     }
     shared_except "locked" "scroll" "search" "tmux" {
         bind "Ctrl a" { SwitchToMode "tmux"; }
+        bind "Ctrl l" { Clear; }
     }
     shared_except "locked" "scroll" "search" {
         bind "Alt s" { SwitchToMode "scroll"; }
