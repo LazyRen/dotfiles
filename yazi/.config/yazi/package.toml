@@ -31,7 +31,7 @@ hash = "9776f378459072b6c2875eae5addc49d"
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
 rev = "e079a00"
-hash = "8d3ae0dcbead9aac4d9384d51915ecad"
+hash = "8dd8bc3484547390ba50dfa58d7436b0"
 
 [[plugin.deps]]
 use = "DreamMaoMao/fg"
