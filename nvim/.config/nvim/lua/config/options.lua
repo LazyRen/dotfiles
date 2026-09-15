@@ -21,13 +21,6 @@ o.spelloptions = "camel"
 
 -- Clipboard (SSH)
 if os.getenv("SSH_TTY") then
-  local function myPaste()
-    return function()
-      local content = vim.fn.getreg('"')
-      return vim.split(content, "\n")
-    end
-  end
-
   -- LazyVim disables clipboard over SSH; re-enable with OSC52 provider
   o.clipboard = "unnamedplus"
   vim.g.clipboard = {
@@ -37,8 +30,8 @@ if os.getenv("SSH_TTY") then
       ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
     },
     paste = {
-      ["+"] = myPaste(),
-      ["*"] = myPaste(),
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
     },
   }
 end
