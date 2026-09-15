@@ -1,14 +1,19 @@
 // General
 attach_to_session true
 copy_on_select true
+dangerously_enable_paste_buffer_read true
 default_layout "default"
+mouse_scroll_resize false
 pane_frames false
 scrollback_editor "nvim"
-scroll_buffer_size 10000
+scroll_buffer_size 1000000
 session_serialization true
 show_startup_tips false
+scroll_mode_sync false
 simplified_ui true
 styled_underlines true
+word_separators "[]{}<>()'\""
+osc8_hyperlinks true
 theme "{{zellij_theme}}"
 
 ui {
@@ -90,6 +95,7 @@ keybinds clear-defaults=true {
         bind "down" "j" { MoveFocus "down"; SwitchToMode "normal"; }
         bind "up" "k" { MoveFocus "up"; SwitchToMode "normal"; }
         bind "right" "l" { MoveFocus "right"; SwitchToMode "normal"; }
+        bind "ctrl l" { Clear; Write 10; }
 
         bind "w" {
             LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij-loom.wasm" {
@@ -321,12 +327,12 @@ keybinds clear-defaults=true {
         }
         bind "Ctrl j" {
             MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
-                name "move_focus_or_tab"; payload "down"; move_mod "ctrl";
+                name "move_focus"; payload "down"; move_mod "ctrl";
             };
         }
         bind "Ctrl k" {
             MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
-                name "move_focus_or_tab"; payload "up"; move_mod "ctrl";
+                name "move_focus"; payload "up"; move_mod "ctrl";
             };
         }
         bind "Ctrl l" {
@@ -345,7 +351,6 @@ keybinds clear-defaults=true {
     }
     shared_except "locked" "scroll" "search" "tmux" {
         bind "Ctrl a" { SwitchToMode "tmux"; }
-        bind "Ctrl l" { Clear; }
     }
     shared_except "locked" "scroll" "search" {
         bind "Alt s" { SwitchToMode "scroll"; }
