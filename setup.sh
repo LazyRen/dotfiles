@@ -102,6 +102,11 @@ ensure_brew() {
 }
 
 install_brew_packages() {
+  # Auto-approve: skip "Press RETURN to continue" and download/install
+  # confirmation prompts. (sudo password prompts from casks can't be skipped.)
+  export NONINTERACTIVE=1
+  export HOMEBREW_NO_ASK=1
+
   echo "Updating Homebrew and upgrading installed packages..."
   brew update
   brew upgrade
