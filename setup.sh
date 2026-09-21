@@ -110,6 +110,7 @@ install_brew_packages() {
   echo "Updating Homebrew and upgrading installed packages..."
   brew update
   brew upgrade
+  brew upgrade --cask
 
   local installed_formulas installed_casks
   installed_formulas=$(brew list --formula)
