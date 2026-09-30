@@ -14,9 +14,10 @@ set fish_complete_path (path resolve $__fish_config_dir/completions/*/) $fish_co
 
 set -g fish_greeting ""
 
+command -q starship && starship init fish | source
+
 if status is-interactive
     command -q zoxide && zoxide init fish | source
-    command -q starship && starship init fish | source
     command -q fzf && fzf --fish | source
     command -q atuin && atuin init fish --disable-up-arrow | source
     command -q mise && mise activate fish | source
