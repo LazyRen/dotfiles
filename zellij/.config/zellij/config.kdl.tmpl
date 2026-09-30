@@ -95,7 +95,7 @@ keybinds clear-defaults=true {
         bind "down" "j" { MoveFocus "down"; SwitchToMode "normal"; }
         bind "up" "k" { MoveFocus "up"; SwitchToMode "normal"; }
         bind "right" "l" { MoveFocus "right"; SwitchToMode "normal"; }
-        bind "ctrl l" { Clear; Write 10; }
+        bind "ctrl l" { Clear; Write 10; SwitchToMode "normal"; }
 
         bind "w" {
             LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij-loom.wasm" {

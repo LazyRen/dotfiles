@@ -123,7 +123,7 @@ run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = ['move-node-to-workspace 2', 'layout floating', 'fullscreen']
+run = ['move-node-to-workspace 2', 'layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
