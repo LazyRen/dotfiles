@@ -322,7 +322,7 @@ keybinds clear-defaults=true {
         // Zellij<->Neovim seamless navigation (vim-zellij-navigator)
         bind "Ctrl h" {
             MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
-                name "move_focus_or_tab"; payload "left"; move_mod "ctrl";
+                name "move_focus"; payload "left"; move_mod "ctrl";
             };
         }
         bind "Ctrl j" {
@@ -337,7 +337,7 @@ keybinds clear-defaults=true {
         }
         bind "Ctrl l" {
             MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
-                name "move_focus_or_tab"; payload "right"; move_mod "ctrl";
+                name "move_focus"; payload "right"; move_mod "ctrl";
             };
         }
 
