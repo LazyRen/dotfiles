@@ -132,4 +132,3 @@ when = "git rev-parse --is-inside-work-tree 2>/dev/null"
 format = "[$output]($style) "
 style = "bright-black italic"
 require_repo = true
-ignore_timeout = true
